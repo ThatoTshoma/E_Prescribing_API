@@ -6,6 +6,8 @@
 *.userosscache
 *.sln.docstates
 
+
+
 # Build results
 [Bb]in/
 [Oo]bj/
@@ -91,3 +93,12 @@ ApplicationInsights.config
 
 # Ignore temporary folders from EF migrations and scaffolding
 MigrationsBackup/
+/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.g.targets
+/E_Prescribing_API/obj/project.assets.json
+/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.dgspec.json
+/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.g.props
+/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.csproj.AssemblyReference.cache
+/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.AssemblyInfo.cs
+/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.AssemblyInfoInputs.cache
+/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.assets.cache
+/E_Prescribing_API/E_Prescribing_API.csproj
