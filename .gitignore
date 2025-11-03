@@ -1,104 +1,24 @@
-# Ignore Visual Studio temporary files, build results, and user-specific files
-.vs/
+# Dependency directories
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.local
+
+# Build outputs
+dist/
+build/
+*.exe
+
+# IDE files
 .vscode/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-
-
-# Build results
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Tt]emp/
-[Tt]est[Rr]esult*/
-[Rr]elease*/
-[Dd]ebug*/
-
-# ASP.NET Scaffolding
-ScaffoldingReadMe.txt
-
-# GitHub Copilot cache and indices
-CopilotIndices/
-FileContentIndex/
-
-# Rider / JetBrains
 .idea/
-*.sln.iml
+*.swp
+*.swo
 
-# Visual Studio 2022+ temp database files
-*.db
-*.db-shm
-*.db-wal
-
-# NuGet packages
-*.nupkg
-packages/
-*.nuget.props
-*.nuget.targets
-
-# Publish and deploy output
-publish/
-wwwroot/dist/
-wwwroot/lib/
-
-# Resharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-
-# Backup & generated files
-*_i.c
-*_p.c
-*_h.h
-*.ilk
-*.meta
-*.obj
-*.pch
-*.pdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlh
-*.tli
-
-# User-specific files
-*.rsuser
-*.userprefs
-
-# Others
-*.cache
-*.log
-*.vsidx
-*.pidb
-*.svclog
-*.scc
-
-# OS generated files
+# OS files
 .DS_Store
 Thumbs.db
-ehthumbs.db
-desktop.ini
-$RECYCLE.BIN/
-
-# Application insights
-ApplicationInsights.config
-
-# Environment variables
-.env
-.env.*
-
-# Ignore temporary folders from EF migrations and scaffolding
-MigrationsBackup/
-/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.g.targets
-/E_Prescribing_API/obj/project.assets.json
-/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.dgspec.json
-/E_Prescribing_API/obj/E_Prescribing_API.csproj.nuget.g.props
-/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.csproj.AssemblyReference.cache
-/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.AssemblyInfo.cs
-/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.AssemblyInfoInputs.cache
-/E_Prescribing_API/obj/Debug/net8.0/E_Prescribing_API.assets.cache
-/E_Prescribing_API/E_Prescribing_API.csproj
