@@ -18,40 +18,82 @@ namespace E_Prescribing_API.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _db;
         private readonly AppSettings _appSettings;
-        public AccountController(UserManager<ApplicationUser> userManager, ApplicationDbContext db, IOptions<AppSettings> appSettings)
+        private readonly ILogger<AccountController> _logger;
+
+        public AccountController(UserManager<ApplicationUser> userManager, ApplicationDbContext db, IOptions<AppSettings> appSettings, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _db = db;
             _appSettings = appSettings.Value;
+            _logger = logger;
         }
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var user = await _userManager.FindByEmailAsync(model.EmailAddress);
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            if (model == null || string.IsNullOrWhiteSpace(model.EmailAddress) || string.IsNullOrWhiteSpace(model.Password))
+                return BadRequest(new { message = "Invalid login request." });
+
+            try
             {
-                var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWTSecret));
+                var user = await _userManager.FindByEmailAsync(model.EmailAddress);
+                if (user == null)
+                {
+                    return Unauthorized(new { message = "Invalid email or password." });
+                }
+
+                var passwordValid = await _userManager.CheckPasswordAsync(user, model.Password);
+                if (!passwordValid)
+                {
+                    return Unauthorized(new { message = "Invalid email or password." });
+                }
+
+                var roles = await _userManager.GetRolesAsync(user);
+                var authClaims = new List<Claim>
+        {
+            new Claim("UserID", user.Id.ToString()),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+
+                foreach (var role in roles)
+                {
+                    authClaims.Add(new Claim(ClaimTypes.Role, role));
+                }
+
+                var key = Encoding.UTF8.GetBytes(_appSettings.JWTSecret);
+                var signingKey = new SymmetricSecurityKey(key);
 
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new[]
-                    {
-                 new Claim("UserID", user.Id.ToString())
-             }),
+                    Subject = new ClaimsIdentity(authClaims),
                     Expires = DateTime.UtcNow.AddMinutes(10),
-                    SigningCredentials = new SigningCredentials(signInKey, SecurityAlgorithms.HmacSha256Signature)
+                    SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256Signature)
                 };
 
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-                var token = tokenHandler.WriteToken(securityToken);
+                var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
 
-                return Ok(new { token });
+                return Ok(new
+                {
+                    token,
+                    expires = tokenDescriptor.Expires,
+                    user = new
+                    {
+                        user.Id,
+                        user.Email,
+                        roles
+                    }
+                });
             }
-
-            return BadRequest(new { message = "Username or password is incorrect." });
+            catch (Exception ex)
+            {
+    
+                _logger.LogError($"Login error: {ex.Message}");
+                return StatusCode(500, new { message = "An error occurred while processing the login request." });
+            }
         }
-  
+
+
     }
 
 
