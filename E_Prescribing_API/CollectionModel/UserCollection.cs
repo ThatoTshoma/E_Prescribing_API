@@ -5,7 +5,7 @@ namespace E_Prescribing_API.CollectionModel
 {
     public class UserCollection
     {
-        public ApplicationUser ApplicationUsers { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public Nurse Nurse { get; set; }
         public Pharmacist Pharmacist { get; set; }
         public Surgeon Surgeon { get; set; }

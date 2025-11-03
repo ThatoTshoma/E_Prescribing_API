@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using E_Prescribing_API.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,12 +7,16 @@ namespace E_Prescribing_API.Data.Services
 {
     public class ApplicationUser : IdentityUser<int>
     {
-
+        public string UserRole { get; set; }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
         }
+        public DbSet<Nurse> Nurses { get; set; }
+        public DbSet<Pharmacist> Pharmacists { get; set; }
+        public DbSet<Surgeon> Surgeons { get; set; }
+        public DbSet<Anaesthesiologist> Anaesthesiologists { get; set; }
     }
 }

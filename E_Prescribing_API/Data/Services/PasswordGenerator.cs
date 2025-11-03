@@ -2,7 +2,7 @@
 
 namespace E_Prescribing_API.Data.Services
 {
-    public class PasswordGenerator
+    public class PasswordGenerator: IPasswordGenerator
     {
         public static string GenerateRandomPassword(PasswordOptions opts = null)
         {
