@@ -2,6 +2,7 @@ using E_Prescribing_API.Data.Services;
 using E_Prescribing_API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,11 @@ builder.Services.AddIdentityApiEndpoints<ApplicationUser>(options => options.Sig
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IPasswordGenerator, PasswordGenerator>();
+builder.Services.AddScoped<UsernameGenerator>();
 
+builder.Logging.AddFile("Logs/app.log");
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

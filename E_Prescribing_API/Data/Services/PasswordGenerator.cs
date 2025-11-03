@@ -4,7 +4,7 @@ namespace E_Prescribing_API.Data.Services
 {
     public class PasswordGenerator: IPasswordGenerator
     {
-        public static string GenerateRandomPassword(PasswordOptions opts = null)
+        public  string GenerateRandomPassword(PasswordOptions opts = null)
         {
             if (opts == null) opts = new PasswordOptions()
             {

@@ -1,10 +1,11 @@
 ﻿using E_Prescribing_API.CollectionModel;
 using E_Prescribing_API.Data.Services;
 using E_Prescribing_API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace E_Prescribing_API.Controllers
 {
@@ -15,141 +16,169 @@ namespace E_Prescribing_API.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _db;
         private readonly IEmailSender _emailSender;
-        public readonly IPasswordGenerator _passwordGenerator ;
-        public readonly UsernameGenerator _usernameGenerator;
+        private readonly IPasswordGenerator _passwordGenerator;
+        private readonly UsernameGenerator _usernameGenerator;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(UserManager<ApplicationUser> userManager, ApplicationDbContext db, IEmailSender emailSender, IPasswordGenerator passwordGenerator, UsernameGenerator usernameGenerator)
+        public AdminController(
+            UserManager<ApplicationUser> userManager,
+            ApplicationDbContext db,
+            IEmailSender emailSender,
+            IPasswordGenerator passwordGenerator,
+            UsernameGenerator usernameGenerator,
+            ILogger<AdminController> logger)
         {
             _userManager = userManager;
             _db = db;
             _emailSender = emailSender;
             _passwordGenerator = passwordGenerator;
             _usernameGenerator = usernameGenerator;
+            _logger = logger;
         }
 
-        public IActionResult AddUser()
-        {
-            var userCollection = new UserCollection();
-
-            return Ok(userCollection);
-        }
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(UserCollection model)
         {
-            var existingUser = await _userManager.FindByEmailAsync(model.ApplicationUser.Email);
-            if (existingUser != null)
+            try
             {
-                BadRequest("A user with this email already exists.");
-                return Ok(model);
-            }
-            var generatedPassword = _passwordGenerator.GenerateRandomPassword();
+                if (model == null || model.ApplicationUser == null)
+                    return BadRequest("Invalid user data.");
 
+                var existingUser = await _userManager.FindByEmailAsync(model.ApplicationUser.Email);
+                if (existingUser != null)
+                    return BadRequest("A user with this email already exists.");
 
-            var user = new ApplicationUser
-            {
-                UserName = _usernameGenerator.GenerateUserName(model.ApplicationUser.Email),
-                Email = model.ApplicationUser.Email,
-                UserRole = model.ApplicationUser.UserRole
-            };
+                var password = _passwordGenerator.GenerateRandomPassword();
+                var user = new ApplicationUser
+                {
+                    UserName = _usernameGenerator.GenerateUserName(model.ApplicationUser.Email),
+                    Email = model.ApplicationUser.Email,
+                    UserRole = model.ApplicationUser.UserRole
+                };
 
-            var result = await _userManager.CreateAsync(user, generatedPassword);
-            string userFirstName;
+                var result = await _userManager.CreateAsync(user, password);
+                if (!result.Succeeded)
+                {
+                    _logger.LogWarning("User creation failed: {Errors}", string.Join(", ", result.Errors));
+                    return BadRequest("User creation failed. Check input and roles.");
+                }
 
-            if (model.ApplicationUser.UserRole == "Nurse")
-                userFirstName = model.Nurse.Name + " " + model.Nurse.Surname;
-            else if (model.ApplicationUser.UserRole == "Pharmacist")
-                userFirstName = model.Pharmacist.Name + " " + model.Pharmacist.Surname;
-            else if (model.ApplicationUser.UserRole == "Surgeon")
-                userFirstName = model.Surgeon.Name + " " + model.Surgeon.Surname;
-            else if (model.ApplicationUser.UserRole == "Anaesthesiologist")
-                userFirstName = model.Anaesthesiologist.Name + " " + model.Anaesthesiologist.Surname;
-            else
-                userFirstName = "User";
-
-
-            if (result.Succeeded)
-            {
                 await _userManager.AddToRoleAsync(user, user.UserRole);
 
-                _emailSender.SendEmail(user.Email,
-                            "User Credentials",
-                            $@"
-                            <p>Dear {userFirstName},</p>
-                            <p>Welcome to E-Prescribing! We are excited to have you on board. Below are your login credentials:</p>
-                            <ul>
-                                <li><strong>Username:</strong> {user.UserName}</li>
-                                <li><strong>Password:</strong> {generatedPassword}</li>
-                            </ul>
-                            <p>If you encounter any issues, feel free to reach out to our support team at mycode1997@gmail.com.</p>
-                            <p>Kind regards,</p>
-                            <p>The E-Prescribing Admin</p>"
+                string fullName;
 
-                );
+                if (model.ApplicationUser.UserRole == "Nurse")
+                {
+                    fullName = $"{model.Nurse.Name} {model.Nurse.Surname}";
+                }
+                else if (model.ApplicationUser.UserRole == "Pharmacist")
+                {
+                    fullName = $"{model.Pharmacist.Name} {model.Pharmacist.Surname}";
+                }
+                else if (model.ApplicationUser.UserRole == "Surgeon")
+                {
+                    fullName = $"{model.Surgeon.Name} {model.Surgeon.Surname}";
+                }
+                else if (model.ApplicationUser.UserRole == "Anaesthesiologist")
+                {
+                    fullName = $"{model.Anaesthesiologist.Name} {model.Anaesthesiologist.Surname}";
+                }
+                else
+                {
+                    fullName = "User";
+                }
 
-                if (user.UserRole == "Nurse")
+                switch (user.UserRole)
                 {
-                    var nurse = new Nurse
-                    {
-                        Name = model.Nurse.Name,
-                        Surname = model.Nurse.Surname,
-                        FullName = model.Nurse.Name + " " + model.Nurse.Surname,
-                        ContactNumber = model.Nurse.ContactNumber,
-                        EmailAddress = model.ApplicationUser.Email,
-                        RegistrationNumber = model.Nurse.RegistrationNumber,
-                        UserId = user.Id,
-                    };
-                    _db.Nurses.Add(nurse);
-                }
-                else if (user.UserRole == "Pharmacist")
-                {
-                    var pharmacist = new Pharmacist
-                    {
-                        Name = model.Pharmacist.Name,
-                        Surname = model.Pharmacist.Surname,
-                        FullName = model.Pharmacist.Name + " " + model.Pharmacist.Surname,
-                        ContactNumber = model.Pharmacist.ContactNumber,
-                        EmailAddress = model.ApplicationUser.Email,
-                        RegistrationNumber = model.Pharmacist.RegistrationNumber,
-                        UserId = user.Id,
-                    };
-                    _db.Pharmacists.Add(pharmacist);
-                }
-                else if (user.UserRole == "Surgeon")
-                {
-                    var surgeon = new Surgeon
-                    {
-                        Name = model.Surgeon.Name,
-                        Surname = model.Surgeon.Surname,
-                        FullName = model.Surgeon.Name + " " + model.Surgeon.Surname,
-                        ContactNumber = model.Surgeon.ContactNumber,
-                        EmailAddress = model.ApplicationUser.Email,
-                        RegistrationNumber = model.Surgeon.RegistrationNumber,
-                        UserId = user.Id,
-                    };
-                    _db.Surgeons.Add(surgeon);
-                }
-                else if (user.UserRole == "Anaesthesiologist")
-                {
-                    var anaesthesiologist = new Anaesthesiologist
-                    {
-                        Name = model.Anaesthesiologist.Name,
-                        Surname = model.Anaesthesiologist.Surname,
-                        FullName = model.Anaesthesiologist.Name + " " + model.Anaesthesiologist.Surname,
-                        ContactNumber = model.Anaesthesiologist.ContactNumber,
-                        EmailAddress = model.ApplicationUser.Email,
-                        RegistrationNumber = model.Anaesthesiologist.RegistrationNumber,
-                        UserId = user.Id,
-                    };
-                    _db.Anaesthesiologists.Add(anaesthesiologist);
+                    case "Nurse":
+                        _db.Nurses.Add(new Nurse
+                        {
+                            Name = model.Nurse.Name,
+                            Surname = model.Nurse.Surname,
+                            FullName = fullName,
+                            ContactNumber = model.Nurse.ContactNumber,
+                            EmailAddress = model.ApplicationUser.Email,
+                            RegistrationNumber = model.Nurse.RegistrationNumber,
+                            UserId = user.Id
+                        });
+                        break;
+
+                    case "Pharmacist":
+                        _db.Pharmacists.Add(new Pharmacist
+                        {
+                            Name = model.Pharmacist.Name,
+                            Surname = model.Pharmacist.Surname,
+                            FullName = fullName,
+                            ContactNumber = model.Pharmacist.ContactNumber,
+                            EmailAddress = model.ApplicationUser.Email,
+                            RegistrationNumber = model.Pharmacist.RegistrationNumber,
+                            UserId = user.Id
+                        });
+                        break;
+
+                    case "Surgeon":
+                        _db.Surgeons.Add(new Surgeon
+                        {
+                            Name = model.Surgeon.Name,
+                            Surname = model.Surgeon.Surname,
+                            FullName = fullName,
+                            ContactNumber = model.Surgeon.ContactNumber,
+                            EmailAddress = model.ApplicationUser.Email,
+                            RegistrationNumber = model.Surgeon.RegistrationNumber,
+                            UserId = user.Id
+                        });
+                        break;
+
+                    case "Anaesthesiologist":
+                        _db.Anaesthesiologists.Add(new Anaesthesiologist
+                        {
+                            Name = model.Anaesthesiologist.Name,
+                            Surname = model.Anaesthesiologist.Surname,
+                            FullName = fullName,
+                            ContactNumber = model.Anaesthesiologist.ContactNumber,
+                            EmailAddress = model.ApplicationUser.Email,
+                            RegistrationNumber = model.Anaesthesiologist.RegistrationNumber,
+                            UserId = user.Id
+                        });
+                        break;
                 }
 
                 await _db.SaveChangesAsync();
-                return RedirectToAction("ListUser");
 
+                try
+                {
+                    await _emailSender.SendEmailAsync(
+                        user.Email,
+                        "User Credentials",
+                        $@"
+                        <p>Dear {fullName},</p>
+                        <p>Your account has been created:</p>
+                        <ul>
+                            <li><strong>Username:</strong> {user.UserName}</li>
+                            <li><strong>Password:</strong> {password}</li>
+                        </ul>
+                        <p>Kind regards,</p> 
+                        <p>Admin</p>"
+                    );
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to send email to {Email}", user.Email);
+                }
+
+                return Ok(new
+                {
+                    message = "User created successfully",
+                    username = user.UserName,
+                    email = user.Email,
+                    role = user.UserRole
+                });
             }
-            else
-                return BadRequest();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while adding user.");
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
         }
-
     }
 }
