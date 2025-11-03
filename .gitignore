@@ -1,68 +1,22 @@
-# Dependency directories
-node_modules/
-vendor/
-__pycache__/
-*.pyc
+# .NET
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.pdb
+*.cache
 
-# Environment files
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Environment
 .env
 .env.local
 
-# Build outputs
-dist/
-build/
-*.exe
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
+# OS
 .DS_Store
 Thumbs.db
-/E_Prescribing_API/obj
-/.vs
-/E_Prescribing_API
-
-E_Prescribing_API/bin/
-E_Prescribing_API/obj/
-
-# .NET Build outputs
-[Bb]in/
-[Oo]bj/
-*.user
-*.suo
-*.cache
-*.pidb
-*.userprefs
-*.ncb
-*.opensdf
-*.sdf
-*.[Cc]ache
-*.ilk
-*.log
-*.lib
-*.sbr
-*.pdb
-*.tlb
-*.tlh
-*.bak
-*.[Cc]ache/
-*.ilk
-*.map
-*.exp
-*.pch
-*.idb
-*.tmp
-*.tlog
-*.lastbuildstate
-
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-bld/
-[Bb]uild/
