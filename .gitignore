@@ -1,0 +1,18 @@
+# Visual Studio cache folders
+.vs/
+*.vscode/
+*.user
+*.suo
+
+# GitHub Copilot cache
+CopilotIndices/
+FileContentIndex/
+
+# Build outputs
+bin/
+obj/
+
+# Other temporary files
+*.db
+*.db-shm
+*.db-wal
