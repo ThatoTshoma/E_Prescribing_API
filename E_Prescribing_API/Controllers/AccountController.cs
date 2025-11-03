@@ -1,5 +1,6 @@
 ﻿using E_Prescribing_API.Models;
 using E_Prescribing_API.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -10,9 +11,10 @@ using System.Text;
 
 namespace E_Prescribing_API.Controllers
 {
-    public class AccountController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AccountController : ControllerBase
     {
-
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _db;
         private readonly AppSettings _appSettings;
@@ -34,8 +36,8 @@ namespace E_Prescribing_API.Controllers
                 {
                     Subject = new ClaimsIdentity(new[]
                     {
-                    new Claim("UserID", user.Id.ToString())
-                }),
+                 new Claim("UserID", user.Id.ToString())
+             }),
                     Expires = DateTime.UtcNow.AddMinutes(10),
                     SigningCredentials = new SigningCredentials(signInKey, SecurityAlgorithms.HmacSha256Signature)
                 };
@@ -49,9 +51,8 @@ namespace E_Prescribing_API.Controllers
 
             return BadRequest(new { message = "Username or password is incorrect." });
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+  
     }
+
+
 }
