@@ -1,18 +1,93 @@
-# Visual Studio cache folders
+# Ignore Visual Studio temporary files, build results, and user-specific files
 .vs/
-*.vscode/
+.vscode/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
 
-# GitHub Copilot cache
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]emp/
+[Tt]est[Rr]esult*/
+[Rr]elease*/
+[Dd]ebug*/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# GitHub Copilot cache and indices
 CopilotIndices/
 FileContentIndex/
 
-# Build outputs
-bin/
-obj/
+# Rider / JetBrains
+.idea/
+*.sln.iml
 
-# Other temporary files
+# Visual Studio 2022+ temp database files
 *.db
 *.db-shm
 *.db-wal
+
+# NuGet packages
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Publish and deploy output
+publish/
+wwwroot/dist/
+wwwroot/lib/
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Backup & generated files
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlh
+*.tli
+
+# User-specific files
+*.rsuser
+*.userprefs
+
+# Others
+*.cache
+*.log
+*.vsidx
+*.pidb
+*.svclog
+*.scc
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Application insights
+ApplicationInsights.config
+
+# Environment variables
+.env
+.env.*
+
+# Ignore temporary folders from EF migrations and scaffolding
+MigrationsBackup/
