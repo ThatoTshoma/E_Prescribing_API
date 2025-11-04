@@ -14,259 +14,155 @@ namespace E_Prescribing_API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _db;
-        private readonly IEmailSender _emailSender;
-        private readonly IPasswordGenerator _passwordGenerator;
-        private readonly UsernameGenerator _usernameGenerator;
+
         private readonly ILogger<AdminController> _logger;
 
-        public AdminController(
-            UserManager<ApplicationUser> userManager,
-            ApplicationDbContext db,
-            IEmailSender emailSender,
-            IPasswordGenerator passwordGenerator,
-            UsernameGenerator usernameGenerator,
-            ILogger<AdminController> logger)
+        public AdminController(ApplicationDbContext db,ILogger<AdminController> logger)
         {
-            _userManager = userManager;
             _db = db;
-            _emailSender = emailSender;
-            _passwordGenerator = passwordGenerator;
-            _usernameGenerator = usernameGenerator;
             _logger = logger;
         }
-
-        [HttpPost("RegisterUser")]
-        public async Task<IActionResult> RegisterUser(UserCollection model)
+        [HttpPost("AddProvince")]
+        public async Task<IActionResult> AddProvince(Province model)
         {
             try
             {
-                if (model == null || model.ApplicationUser == null)
-                    return BadRequest("Invalid user data.");
+                if(model == null || string.IsNullOrEmpty(model.Name))
+                    return BadRequest("Invalid province");
 
-                var existingUser = await _userManager.FindByEmailAsync(model.ApplicationUser.Email);
-                if (existingUser != null)
-                    return BadRequest("A user with this email already exists.");
-
-                var password = _passwordGenerator.GenerateRandomPassword();
-                var user = new ApplicationUser
+                if (await _db.Provinces.AnyAsync(a => a.Name == model.Name))
                 {
-                    UserName = _usernameGenerator.GenerateUserName(model.ApplicationUser.Email),
-                    Email = model.ApplicationUser.Email
+                    return BadRequest("A province with this name already exist");
+                }
+
+                var province = new Province
+                {
+                    Name = model.Name
                 };
-
-                var result = await _userManager.CreateAsync(user, password);
-                if (!result.Succeeded)
-                {
-                    _logger.LogWarning("User creation failed: {Errors}", string.Join(", ", result.Errors));
-                    return BadRequest("User creation failed. Check input and roles.");
-                }
-
-                await _userManager.AddToRoleAsync(user, model.Role);
-
-                switch (model.Role)
-                {
-                    case "Nurse":
-                        _db.Nurses.Add(new Nurse
-                        {
-                            Name = model.Nurse.Name,
-                            Surname = model.Nurse.Surname,
-                            FullName = model.Nurse.Name + " " + model.Nurse.Surname,
-                            ContactNumber = model.Nurse.ContactNumber,
-                            EmailAddress = model.ApplicationUser.Email,
-                            RegistrationNumber = model.Nurse.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-
-                    case "Pharmacist":
-                        _db.Pharmacists.Add(new Pharmacist
-                        {
-                            Name = model.Pharmacist.Name,
-                            Surname = model.Pharmacist.Surname,
-                            FullName = model.Pharmacist.Name + " " + model.Pharmacist.Surname,
-                            ContactNumber = model.Pharmacist.ContactNumber,
-                            EmailAddress = model.ApplicationUser.Email,
-                            RegistrationNumber = model.Pharmacist.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-
-                    case "Surgeon":
-                        _db.Surgeons.Add(new Surgeon
-                        {
-                            Name = model.Surgeon.Name,
-                            Surname = model.Surgeon.Surname,
-                            FullName = model.Surgeon.Name + " " + model.Surgeon.Surname,
-                            ContactNumber = model.Surgeon.ContactNumber,
-                            EmailAddress = model.ApplicationUser.Email,
-                            RegistrationNumber = model.Surgeon.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-
-                    case "Anaesthesiologist":
-                        _db.Anaesthesiologists.Add(new Anaesthesiologist
-                        {
-                            Name = model.Anaesthesiologist.Name,
-                            Surname = model.Anaesthesiologist.Surname,
-                            FullName = model.Anaesthesiologist.Name + " " + model.Anaesthesiologist.Surname,
-                            ContactNumber = model.Anaesthesiologist.ContactNumber,
-                            EmailAddress = model.ApplicationUser.Email,
-                            RegistrationNumber = model.Anaesthesiologist.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-                }
-
+                _db.Provinces.Add(province);
                 await _db.SaveChangesAsync();
-
-                try
-                {
-                    await _emailSender.SendEmailAsync(
-                        user.Email,
-                        "User Credentials",
-                        $@"
-                        <p>Dear {model.Role},</p>
-                        <p>Your account has been created:</p>
-                        <ul>
-                            <li><strong>Username:</strong> {user.UserName}</li>
-                            <li><strong>Password:</strong> {password}</li>
-                        </ul>
-                        <p>Kind regards,</p> 
-                        <p>Admin</p>"
-                    );
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Failed to send email to {Email}", user.Email);
-                }
 
                 return Ok(new
                 {
-                    message = "User created successfully",
-                    username = user.UserName,
-                    email = user.Email,
-                    role = model.Role
+                    message = "Province added successfully.",
+                    name = province.Name
                 });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error while adding user.");
+                _logger.LogError(ex, "Error while adding province {ProvinceName}", model?.Name);
                 return StatusCode(500, "An unexpected error occurred. Please try again later.");
             }
         }
-        [HttpGet("GetUser")]
-        public async Task<IActionResult> GetUser()
+
+        [HttpPost("AddCity")]
+        public async Task<IActionResult> AddCity(City model)
         {
             try
             {
-                var users = await _userManager.Users.ToListAsync();
-                var userList = new List<object>();
+                if (model == null || string.IsNullOrEmpty(model.Name))
+                    return BadRequest("Invalid city");
 
-                foreach (var user in users)
+                if (await _db.Cities.AnyAsync(a => a.Name == model.Name))
                 {
-                    var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-
-                    if (role == "Nurse")
-                    {
-                        var nurse = await _db.Nurses.FirstOrDefaultAsync(n => n.UserId == user.Id);
-
-                        if (nurse != null)
-                        {
-                            userList.Add(new
-                            {
-                                nurse.NurseId,
-                                nurse.Name,
-                                nurse.Surname,
-                                nurse.FullName,
-                                nurse.ContactNumber,
-                                nurse.EmailAddress,
-                                nurse.RegistrationNumber,
-                                nurse.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
-                    else if (role == "Pharmacist")
-                    {
-                        var pharmacist = await _db.Pharmacists.FirstOrDefaultAsync(p => p.UserId == user.Id);
-
-                        if (pharmacist != null)
-                        {
-                            userList.Add(new
-                            {
-                                pharmacist.PharmacistId,
-                                pharmacist.Name,
-                                pharmacist.Surname,
-                                pharmacist.FullName,
-                                pharmacist.ContactNumber,
-                                pharmacist.EmailAddress,
-                                pharmacist.RegistrationNumber,
-                                pharmacist.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
-                    else if (role == "Surgeon")
-                    {
-                        var surgeon = await _db.Surgeons.FirstOrDefaultAsync(s => s.UserId == user.Id);
-
-                        if (surgeon != null)
-                        {
-                            userList.Add(new
-                            {
-                                surgeon.SurgeonId,
-                                surgeon.Name,
-                                surgeon.Surname,
-                                surgeon.FullName,
-                                surgeon.ContactNumber,
-                                surgeon.EmailAddress,
-                                surgeon.RegistrationNumber,
-                                surgeon.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
-                    else if (role == "Anaesthesiologist")
-                    {
-                        var anaesthesiologist = await _db.Anaesthesiologists.FirstOrDefaultAsync(a => a.UserId == user.Id);
-
-                        if (anaesthesiologist != null)
-                        {
-                            userList.Add(new
-                            {
-                                anaesthesiologist.AnaesthesiologistId,
-                                anaesthesiologist.Name,
-                                anaesthesiologist.Surname,
-                                anaesthesiologist.FullName,
-                                anaesthesiologist.ContactNumber,
-                                anaesthesiologist.EmailAddress,
-                                anaesthesiologist.RegistrationNumber,
-                                anaesthesiologist.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
+                    return BadRequest("A city with this name already exist");
                 }
 
-                return Ok(userList);
+                var city = new City
+                {
+                    Name = model.Name,
+                    ProvinceId = model.ProvinceId
+                };
+                _db.Cities.Add(city);
+                await _db.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    message = "City added successfully.",
+                    name = city.Name
+                });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error while getting user.");
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                _logger.LogError(ex, "Error while adding city {Name}", model?.Name);
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
             }
         }
+
+        [HttpPost("AddSuburb")]
+        public async Task<IActionResult> AddSuburb(Suburb model)
+        {
+            try
+            {
+                if (model == null || string.IsNullOrEmpty(model.Name))
+                    return BadRequest("Invalid suburb");
+
+                if (await _db.Suburbs.AnyAsync(a => a.Name == model.Name))
+                {
+                    return BadRequest("A city with this name already exist");
+                }
+
+                var suburb = new Suburb
+                {
+                    Name = model.Name,
+                    PostalCode = model.PostalCode,
+                    CityId = model.CityId
+                };
+                _db.Suburbs.Add(suburb);
+                await _db.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    message = "Suburb added successfully.",
+                    name = suburb.Name
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while adding suburb {Name}", model?.Name);
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
+        }
+
+        [HttpPost("AddFacility")]
+        public async Task<IActionResult> AddFacility(Facility model)
+        {
+            try
+            {
+                if (model == null || string.IsNullOrEmpty(model.Name))
+                    return BadRequest("Invalid suburb");
+
+                if (await _db.Facilities.AnyAsync(a => a.Name == model.Name))
+                {
+                    return BadRequest("A facility with this name already exist");
+                }
+
+                var facility = new Facility
+                {
+                    Name = model.Name,
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    ContactNumber = model.ContactNumber,
+                    SuburbId = model.SuburbId,
+                    FacilityTypeId = model.FacilityTypeId
+                };
+                _db.Facilities.Add(facility);
+                await _db.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    message = "Facility added successfully.",
+                    name = facility.Name
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while adding facility {Name}", model?.Name);
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
+        }
+
 
     }
 }

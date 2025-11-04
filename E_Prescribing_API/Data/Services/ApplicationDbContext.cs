@@ -17,5 +17,10 @@ namespace E_Prescribing_API.Data.Services
         public DbSet<Pharmacist> Pharmacists { get; set; }
         public DbSet<Surgeon> Surgeons { get; set; }
         public DbSet<Anaesthesiologist> Anaesthesiologists { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Suburb> Suburbs { get; set; }
+        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<FacilityType> FacilitiesTypes { get; set; }
     }
 }

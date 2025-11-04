@@ -4,6 +4,7 @@ using E_Prescribing_API.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Prescribing_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251104140514_addProvinces")]
+    partial class addProvinces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,62 +151,6 @@ namespace E_Prescribing_API.Migrations
                     b.HasIndex("ProvinceId");
 
                     b.ToTable("Cities");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.Facility", b =>
-                {
-                    b.Property<int>("FacilityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacilityId"));
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AddressLine2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FacilityTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SuburbId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FacilityId");
-
-                    b.HasIndex("FacilityTypeId");
-
-                    b.HasIndex("SuburbId");
-
-                    b.ToTable("Facilities");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.FacilityType", b =>
-                {
-                    b.Property<int>("FacilityTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacilityTypeId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("FacilityTypeId");
-
-                    b.ToTable("FacilitiesTypes");
                 });
 
             modelBuilder.Entity("E_Prescribing_API.Models.Nurse", b =>
@@ -515,25 +462,6 @@ namespace E_Prescribing_API.Migrations
                         .IsRequired();
 
                     b.Navigation("Province");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.Facility", b =>
-                {
-                    b.HasOne("E_Prescribing_API.Models.FacilityType", "FacilityType")
-                        .WithMany()
-                        .HasForeignKey("FacilityTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("E_Prescribing_API.Models.Suburb", "Suburb")
-                        .WithMany()
-                        .HasForeignKey("SuburbId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FacilityType");
-
-                    b.Navigation("Suburb");
                 });
 
             modelBuilder.Entity("E_Prescribing_API.Models.Nurse", b =>

@@ -3,7 +3,7 @@ using E_Prescribing_API.Models;
 
 namespace E_Prescribing_API.CollectionModel
 {
-    public class UserCollection
+    public class RegisterCollection
     {
         public ApplicationUser ApplicationUser { get; set; }
         public Nurse Nurse { get; set; }

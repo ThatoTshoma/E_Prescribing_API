@@ -13,9 +13,7 @@ namespace E_Prescribing_API.Models
         public string FullName { get; set; }
         [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
-        [EmailAddress]
-        [Display(Name = "Email Addrress")]
-        public string EmailAddress { get; set; }
+
         [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
         public ApplicationUser User { get; set; }
