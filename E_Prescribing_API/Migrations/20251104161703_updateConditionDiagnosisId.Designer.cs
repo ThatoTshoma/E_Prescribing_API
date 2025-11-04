@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Prescribing_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251104105840_removerUseremail")]
-    partial class removerUseremail
+    [Migration("20251104161703_updateConditionDiagnosisId")]
+    partial class updateConditionDiagnosisId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,95 +93,54 @@ namespace E_Prescribing_API.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Anaesthesiologist", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.ActiveIngredient", b =>
                 {
-                    b.Property<int>("AnaesthesiologistId")
+                    b.Property<int>("IngredientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnaesthesiologistId"));
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IngredientId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("IngredientId");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AnaesthesiologistId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Anaesthesiologists");
+                    b.ToTable("ActiveIngredients");
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Nurse", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.City", b =>
                 {
-                    b.Property<int>("NurseId")
+                    b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NurseId"));
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.HasKey("NurseId");
+                    b.HasKey("CityId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProvinceId");
 
-                    b.ToTable("Nurses");
+                    b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Pharmacist", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.ConditionDiagnosis", b =>
                 {
-                    b.Property<int>("PharmacistId")
+                    b.Property<int>("ConditionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PharmacistId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConditionId"));
 
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
+                    b.Property<string>("Icd10Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -189,35 +148,104 @@ namespace E_Prescribing_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("ConditionId");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PharmacistId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Pharmacists");
+                    b.ToTable("ConditionDiagnosis");
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Surgeon", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.ContraIndication", b =>
                 {
-                    b.Property<int>("SurgeonId")
+                    b.Property<int>("ContraIndicationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SurgeonId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContraIndicationId"));
+
+                    b.Property<int>("ActiveIngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConditionDiagnosisId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ContraIndicationId");
+
+                    b.HasIndex("ActiveIngredientId");
+
+                    b.HasIndex("ConditionDiagnosisId");
+
+                    b.ToTable("ContraIndications");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.Facility", b =>
+                {
+                    b.Property<int>("FacilityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacilityId"));
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FacilityTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SuburbId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FacilityId");
+
+                    b.HasIndex("FacilityTypeId");
+
+                    b.HasIndex("SuburbId");
+
+                    b.ToTable("Facilities");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.FacilityType", b =>
+                {
+                    b.Property<int>("FacilityTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacilityTypeId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FacilityTypeId");
+
+                    b.ToTable("FacilitiesTypes");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.MedicalSaff", b =>
+                {
+                    b.Property<int>("StaffId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StaffId"));
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FacilityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -238,11 +266,55 @@ namespace E_Prescribing_API.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("SurgeonId");
+                    b.HasKey("StaffId");
+
+                    b.HasIndex("FacilityId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Surgeons");
+                    b.ToTable("MedicalStaffs");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.Province", b =>
+                {
+                    b.Property<int>("ProvinceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinceId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProvinceId");
+
+                    b.ToTable("Provinces");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.Suburb", b =>
+                {
+                    b.Property<int>("SuburbId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SuburbId"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PostalCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("SuburbId");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Suburbs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -378,48 +450,83 @@ namespace E_Prescribing_API.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Anaesthesiologist", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.City", b =>
                 {
+                    b.HasOne("E_Prescribing_API.Models.Province", "Province")
+                        .WithMany()
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.ContraIndication", b =>
+                {
+                    b.HasOne("E_Prescribing_API.Models.ActiveIngredient", "ActiveIngredient")
+                        .WithMany()
+                        .HasForeignKey("ActiveIngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Prescribing_API.Models.ConditionDiagnosis", "ConditionDiagnosis")
+                        .WithMany()
+                        .HasForeignKey("ConditionDiagnosisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ActiveIngredient");
+
+                    b.Navigation("ConditionDiagnosis");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.Facility", b =>
+                {
+                    b.HasOne("E_Prescribing_API.Models.FacilityType", "FacilityType")
+                        .WithMany()
+                        .HasForeignKey("FacilityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Prescribing_API.Models.Suburb", "Suburb")
+                        .WithMany()
+                        .HasForeignKey("SuburbId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FacilityType");
+
+                    b.Navigation("Suburb");
+                });
+
+            modelBuilder.Entity("E_Prescribing_API.Models.MedicalSaff", b =>
+                {
+                    b.HasOne("E_Prescribing_API.Models.Facility", "Facility")
+                        .WithMany()
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("E_Prescribing_API.Data.Services.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Facility");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.Nurse", b =>
+            modelBuilder.Entity("E_Prescribing_API.Models.Suburb", b =>
                 {
-                    b.HasOne("E_Prescribing_API.Data.Services.ApplicationUser", "User")
+                    b.HasOne("E_Prescribing_API.Models.City", "City")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.Pharmacist", b =>
-                {
-                    b.HasOne("E_Prescribing_API.Data.Services.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.Surgeon", b =>
-                {
-                    b.HasOne("E_Prescribing_API.Data.Services.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

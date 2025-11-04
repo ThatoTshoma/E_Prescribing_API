@@ -1,4 +1,4 @@
-﻿using E_Prescribing_API.Data.Services;
+﻿using E_Prescribing_API.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace E_Prescribing_API.Models

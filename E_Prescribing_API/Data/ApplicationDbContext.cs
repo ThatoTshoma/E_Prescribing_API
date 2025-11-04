@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace E_Prescribing_API.Data.Services
+namespace E_Prescribing_API.Data
 {
     public class ApplicationUser : IdentityUser<int>
     {
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
         public DbSet<Province> Provinces { get; set; }
@@ -19,5 +19,13 @@ namespace E_Prescribing_API.Data.Services
         public DbSet<Facility> Facilities { get; set; }
         public DbSet<FacilityType> FacilitiesTypes { get; set; }
         public DbSet<MedicalSaff> MedicalStaffs { get; set; }
+        public DbSet<ActiveIngredient> ActiveIngredients { get; set; }
+        public DbSet<ConditionDiagnosis> ConditionDiagnosis { get; set; }
+        public DbSet<ContraIndication> ContraIndications { get; set; }
+        public DbSet<Medication> Medications { get; set; }
+        public DbSet<DosageForm> DosageForms { get; set; }
+        public DbSet<MedicationIngredient> MedicationIngredients { get; set; }
+        public DbSet<PatientMedication> PatientMedications { get; set; }
+        public DbSet<Patient> Patients { get; set; }
     }
 }

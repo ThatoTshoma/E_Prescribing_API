@@ -1,4 +1,5 @@
 ﻿using E_Prescribing_API.CollectionModel;
+using E_Prescribing_API.Data;
 using E_Prescribing_API.Data.Services;
 using E_Prescribing_API.Models;
 using Microsoft.AspNetCore.Http;
