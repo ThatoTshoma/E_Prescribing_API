@@ -10,6 +10,6 @@ namespace E_Prescribing_API.CollectionModel
         public Pharmacist Pharmacist { get; set; }
         public Surgeon Surgeon { get; set; }
         public Anaesthesiologist Anaesthesiologist { get; set; }
-        public string ReturnUrl { get; set; }
+        public string Role { get; set; }
     }
 }

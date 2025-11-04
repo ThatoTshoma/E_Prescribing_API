@@ -30,12 +30,12 @@ namespace E_Prescribing_API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if (model == null || string.IsNullOrWhiteSpace(model.EmailAddress) || string.IsNullOrWhiteSpace(model.Password))
+            if (model == null || string.IsNullOrWhiteSpace(model.Username) || string.IsNullOrWhiteSpace(model.Password))
                 return BadRequest(new { message = "Invalid login request." });
 
             try
             {
-                var user = await _userManager.FindByEmailAsync(model.EmailAddress);
+                var user = await _userManager.FindByNameAsync(model.Username);
                 if (user == null)
                 {
                     return Unauthorized(new { message = "Invalid email or password." });
@@ -50,9 +50,7 @@ namespace E_Prescribing_API.Controllers
                 var roles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
         {
-            new Claim("UserID", user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new Claim("UserID", user.Id.ToString())
         };
 
                 foreach (var role in roles)
@@ -80,7 +78,7 @@ namespace E_Prescribing_API.Controllers
                     user = new
                     {
                         user.Id,
-                        user.Email,
+                        user.UserName,
                         roles
                     }
                 });

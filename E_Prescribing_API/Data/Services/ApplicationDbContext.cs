@@ -7,7 +7,6 @@ namespace E_Prescribing_API.Data.Services
 {
     public class ApplicationUser : IdentityUser<int>
     {
-        public string UserRole { get; set; }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
     {

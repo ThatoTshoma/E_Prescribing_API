@@ -52,8 +52,7 @@ namespace E_Prescribing_API.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = _usernameGenerator.GenerateUserName(model.ApplicationUser.Email),
-                    Email = model.ApplicationUser.Email,
-                    UserRole = model.ApplicationUser.UserRole
+                    Email = model.ApplicationUser.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, password);
@@ -63,39 +62,16 @@ namespace E_Prescribing_API.Controllers
                     return BadRequest("User creation failed. Check input and roles.");
                 }
 
-                await _userManager.AddToRoleAsync(user, user.UserRole);
+                await _userManager.AddToRoleAsync(user, model.Role);
 
-                string fullName;
-
-                if (model.ApplicationUser.UserRole == "Nurse")
-                {
-                    fullName = $"{model.Nurse.Name} {model.Nurse.Surname}";
-                }
-                else if (model.ApplicationUser.UserRole == "Pharmacist")
-                {
-                    fullName = $"{model.Pharmacist.Name} {model.Pharmacist.Surname}";
-                }
-                else if (model.ApplicationUser.UserRole == "Surgeon")
-                {
-                    fullName = $"{model.Surgeon.Name} {model.Surgeon.Surname}";
-                }
-                else if (model.ApplicationUser.UserRole == "Anaesthesiologist")
-                {
-                    fullName = $"{model.Anaesthesiologist.Name} {model.Anaesthesiologist.Surname}";
-                }
-                else
-                {
-                    fullName = "User";
-                }
-
-                switch (user.UserRole)
+                switch (model.Role)
                 {
                     case "Nurse":
                         _db.Nurses.Add(new Nurse
                         {
                             Name = model.Nurse.Name,
                             Surname = model.Nurse.Surname,
-                            FullName = fullName,
+                            FullName = model.Nurse.Name + " " + model.Nurse.Surname,
                             ContactNumber = model.Nurse.ContactNumber,
                             EmailAddress = model.ApplicationUser.Email,
                             RegistrationNumber = model.Nurse.RegistrationNumber,
@@ -108,7 +84,7 @@ namespace E_Prescribing_API.Controllers
                         {
                             Name = model.Pharmacist.Name,
                             Surname = model.Pharmacist.Surname,
-                            FullName = fullName,
+                            FullName = model.Pharmacist.Name + " " + model.Pharmacist.Surname,
                             ContactNumber = model.Pharmacist.ContactNumber,
                             EmailAddress = model.ApplicationUser.Email,
                             RegistrationNumber = model.Pharmacist.RegistrationNumber,
@@ -121,7 +97,7 @@ namespace E_Prescribing_API.Controllers
                         {
                             Name = model.Surgeon.Name,
                             Surname = model.Surgeon.Surname,
-                            FullName = fullName,
+                            FullName = model.Surgeon.Name + " " + model.Surgeon.Surname,
                             ContactNumber = model.Surgeon.ContactNumber,
                             EmailAddress = model.ApplicationUser.Email,
                             RegistrationNumber = model.Surgeon.RegistrationNumber,
@@ -134,7 +110,7 @@ namespace E_Prescribing_API.Controllers
                         {
                             Name = model.Anaesthesiologist.Name,
                             Surname = model.Anaesthesiologist.Surname,
-                            FullName = fullName,
+                            FullName = model.Anaesthesiologist.Name + " " + model.Anaesthesiologist.Surname,
                             ContactNumber = model.Anaesthesiologist.ContactNumber,
                             EmailAddress = model.ApplicationUser.Email,
                             RegistrationNumber = model.Anaesthesiologist.RegistrationNumber,
@@ -151,7 +127,7 @@ namespace E_Prescribing_API.Controllers
                         user.Email,
                         "User Credentials",
                         $@"
-                        <p>Dear {fullName},</p>
+                        <p>Dear {model.Role},</p>
                         <p>Your account has been created:</p>
                         <ul>
                             <li><strong>Username:</strong> {user.UserName}</li>
@@ -171,7 +147,7 @@ namespace E_Prescribing_API.Controllers
                     message = "User created successfully",
                     username = user.UserName,
                     email = user.Email,
-                    role = user.UserRole
+                    role = model.Role
                 });
             }
             catch (Exception ex)
