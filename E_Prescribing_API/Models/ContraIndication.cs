@@ -6,11 +6,7 @@ namespace E_Prescribing_API.Models
     {
         [Key]
         public int ContraIndicationId { get; set; }
-        public ActiveIngredient ActiveIngredient { get; set; }
-        [Display(Name = "Active Ingredient Name")]
         public int ActiveIngredientId { get; set; }
-        public ConditionDiagnosis ConditionDiagnosis { get; set; }
-        [Display(Name = "Codintion Diagnosis")]
         public int ConditionDiagnosisId { get; set; }
     }
 }

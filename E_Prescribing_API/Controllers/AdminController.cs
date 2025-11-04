@@ -1,6 +1,7 @@
 ﻿using E_Prescribing_API.CollectionModel;
 using E_Prescribing_API.Data;
 using E_Prescribing_API.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -321,7 +322,7 @@ namespace E_Prescribing_API.Controllers
                 {
                     var medIngredient = new MedicationIngredient
                     {
-                        MedicationId = medication.MedicationId,
+                        MedicationId = model.Medication.MedicationId,
                         ActiveIngredientId = ingredient,
                         ActiveIngredientStrength = model.Strengths[ingredient]
                     };

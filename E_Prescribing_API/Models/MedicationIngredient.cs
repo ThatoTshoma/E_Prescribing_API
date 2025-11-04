@@ -7,9 +7,7 @@ namespace E_Prescribing_API.Models
     {
         [Key]
         public int MedicationIngredientId { get; set; }
-        public ActiveIngredient ActiveIngredient { get; set; }
         public int ActiveIngredientId { get; set; }
-        public Medication Medication { get; set; }
         public int MedicationId { get; set; }
         public string ActiveIngredientStrength { get; set; }
 

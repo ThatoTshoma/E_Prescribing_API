@@ -15,9 +15,7 @@ namespace E_Prescribing_API.Models
         public string ContactNumber { get; set; }
         [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
-        public Facility Facility { get; set; }
         public int FacilityId { get; set; }
-        public ApplicationUser User { get; set; }
         public int UserId { get; set; }
     }
 }

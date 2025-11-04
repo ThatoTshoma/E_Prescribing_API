@@ -28,11 +28,9 @@ namespace E_Prescribing_API.Models
         public string? AddressLine1 { get; set; }
         [Display(Name = "Address Line 2")]
         public string? AddressLine2 { get; set; }
-        public Suburb Suburb { get; set; }
-        [Display(Name = "Suburb Name")]
+
         public int? SuburbId { get; set; }
-        public MedicalSaff MedicalSaff { get; set; }
-        [Display(Name = "Nurse")]
+
         public int? MedicalSaffId { get; set; }
 
 

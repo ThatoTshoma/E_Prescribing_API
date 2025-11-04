@@ -9,6 +9,7 @@ namespace E_Prescribing_API.CollectionModel
         public Dictionary<int, string> Strengths { get; set; }
         public List<int> SelectedIngredient { get; set; }
 
+ 
 
     }
 }
