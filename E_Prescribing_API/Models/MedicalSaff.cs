@@ -1,22 +1,22 @@
 ﻿using E_Prescribing_API.Data.Services;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 
 namespace E_Prescribing_API.Models
 {
-    public class Anaesthesiologist
+    public class MedicalSaff
     {
         [Key]
-        public int AnaesthesiologistId { get; set; }
+        public int StaffId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        [DisplayName("Full Name")]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
-        [DisplayName("Contact Number")]
+        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
-
-        [DisplayName("Registration Number")]
+        [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
+        public Facility Facility { get; set; }
+        public int FacilityId { get; set; }
         public ApplicationUser User { get; set; }
         public int UserId { get; set; }
     }

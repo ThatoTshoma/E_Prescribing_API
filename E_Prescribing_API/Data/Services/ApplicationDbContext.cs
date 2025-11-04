@@ -13,14 +13,11 @@ namespace E_Prescribing_API.Data.Services
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
         }
-        public DbSet<Nurse> Nurses { get; set; }
-        public DbSet<Pharmacist> Pharmacists { get; set; }
-        public DbSet<Surgeon> Surgeons { get; set; }
-        public DbSet<Anaesthesiologist> Anaesthesiologists { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Suburb> Suburbs { get; set; }
         public DbSet<Facility> Facilities { get; set; }
         public DbSet<FacilityType> FacilitiesTypes { get; set; }
+        public DbSet<MedicalSaff> MedicalStaffs { get; set; }
     }
 }

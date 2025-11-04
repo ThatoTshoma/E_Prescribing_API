@@ -6,10 +6,7 @@ namespace E_Prescribing_API.CollectionModel
     public class RegisterCollection
     {
         public ApplicationUser ApplicationUser { get; set; }
-        public Nurse Nurse { get; set; }
-        public Pharmacist Pharmacist { get; set; }
-        public Surgeon Surgeon { get; set; }
-        public Anaesthesiologist Anaesthesiologist { get; set; }
+        public MedicalSaff MedicalStaff { get; set; }
         public string Role { get; set; }
     }
 }

@@ -65,56 +65,19 @@ namespace E_Prescribing_API.Controllers
 
                 await _userManager.AddToRoleAsync(user, model.Role);
 
-                switch (model.Role)
+                var staff = new MedicalSaff
                 {
-                    case "Nurse":
-                        _db.Nurses.Add(new Nurse
-                        {
-                            Name = model.Nurse.Name,
-                            Surname = model.Nurse.Surname,
-                            FullName = model.Nurse.Name + " " + model.Nurse.Surname,
-                            ContactNumber = model.Nurse.ContactNumber,
-                            RegistrationNumber = model.Nurse.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
+                    UserId = user.Id,
+                    Name = model.MedicalStaff.Name,
+                    Surname = model.MedicalStaff.Surname,
+                    FullName = model.MedicalStaff.Name + " " + model.MedicalStaff.Surname,
+                    ContactNumber = model.MedicalStaff.ContactNumber,
+                    RegistrationNumber = model.MedicalStaff.RegistrationNumber,
+                    FacilityId = model.MedicalStaff.FacilityId,
+                    
+                };
+                _db.MedicalStaffs.Add(staff);
 
-                    case "Pharmacist":
-                        _db.Pharmacists.Add(new Pharmacist
-                        {
-                            Name = model.Pharmacist.Name,
-                            Surname = model.Pharmacist.Surname,
-                            FullName = model.Pharmacist.Name + " " + model.Pharmacist.Surname,
-                            ContactNumber = model.Pharmacist.ContactNumber,
-                            RegistrationNumber = model.Pharmacist.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-
-                    case "Surgeon":
-                        _db.Surgeons.Add(new Surgeon
-                        {
-                            Name = model.Surgeon.Name,
-                            Surname = model.Surgeon.Surname,
-                            FullName = model.Surgeon.Name + " " + model.Surgeon.Surname,
-                            ContactNumber = model.Surgeon.ContactNumber,
-                            RegistrationNumber = model.Surgeon.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-
-                    case "Anaesthesiologist":
-                        _db.Anaesthesiologists.Add(new Anaesthesiologist
-                        {
-                            Name = model.Anaesthesiologist.Name,
-                            Surname = model.Anaesthesiologist.Surname,
-                            FullName = model.Anaesthesiologist.Name + " " + model.Anaesthesiologist.Surname,
-                            ContactNumber = model.Anaesthesiologist.ContactNumber,
-                            RegistrationNumber = model.Anaesthesiologist.RegistrationNumber,
-                            UserId = user.Id
-                        });
-                        break;
-                }
                 await _db.SaveChangesAsync();
 
                 try
@@ -159,92 +122,30 @@ namespace E_Prescribing_API.Controllers
             {
                 var users = await _userManager.Users.ToListAsync();
                 var userList = new List<object>();
-
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                    var stuff = await _db.MedicalStaffs.FirstOrDefaultAsync(n => n.UserId == user.Id);
 
-                    if (role == "Nurse")
+                    if (stuff != null)
                     {
-                        var nurse = await _db.Nurses.FirstOrDefaultAsync(n => n.UserId == user.Id);
-
-                        if (nurse != null)
+                        userList.Add(new
                         {
-                            userList.Add(new
-                            {
-                                nurse.Name,
-                                nurse.Surname,
-                                nurse.FullName,
-                                nurse.ContactNumber,
-                                nurse.RegistrationNumber,
-                                nurse.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
+                            stuff.Name,
+                            stuff.Surname,
+                            stuff.FullName,
+                            stuff.ContactNumber,
+                            stuff.RegistrationNumber,
+                            stuff.UserId,
+                            stuff.FacilityId,
+                            Role = role,
+                            Username = user.UserName,
+                            UserEmail = user.Email
+                        });
                     }
-                    else if (role == "Pharmacist")
-                    {
-                        var pharmacist = await _db.Pharmacists.FirstOrDefaultAsync(p => p.UserId == user.Id);
 
-                        if (pharmacist != null)
-                        {
-                            userList.Add(new
-                            {
-                                pharmacist.Name,
-                                pharmacist.Surname,
-                                pharmacist.FullName,
-                                pharmacist.ContactNumber,
-                                pharmacist.RegistrationNumber,
-                                pharmacist.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
-                    else if (role == "Surgeon")
-                    {
-                        var surgeon = await _db.Surgeons.FirstOrDefaultAsync(s => s.UserId == user.Id);
-
-                        if (surgeon != null)
-                        {
-                            userList.Add(new
-                            {
-                                surgeon.Name,
-                                surgeon.Surname,
-                                surgeon.FullName,
-                                surgeon.ContactNumber,
-                                surgeon.RegistrationNumber,
-                                surgeon.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
-                    else if (role == "Anaesthesiologist")
-                    {
-                        var anaesthesiologist = await _db.Anaesthesiologists.FirstOrDefaultAsync(a => a.UserId == user.Id);
-
-                        if (anaesthesiologist != null)
-                        {
-                            userList.Add(new
-                            {
-                                anaesthesiologist.Name,
-                                anaesthesiologist.Surname,
-                                anaesthesiologist.FullName,
-                                anaesthesiologist.ContactNumber,
-                                anaesthesiologist.RegistrationNumber,
-                                anaesthesiologist.UserId,
-                                Role = role,
-                                Username = user.UserName,
-                                UserEmail = user.Email
-                            });
-                        }
-                    }
                 }
+
 
                 return Ok(userList);
             }
