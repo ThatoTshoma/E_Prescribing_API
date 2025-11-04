@@ -1,4 +1,5 @@
-﻿using E_Prescribing_API.Data.Services;
+﻿using E_Prescribing_API.CollectionModel;
+using E_Prescribing_API.Data.Services;
 using E_Prescribing_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -28,7 +29,7 @@ namespace E_Prescribing_API.Controllers
             _logger = logger;
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginCollection model)
         {
             if (model == null || string.IsNullOrWhiteSpace(model.Username) || string.IsNullOrWhiteSpace(model.Password))
                 return BadRequest(new { message = "Invalid login request." });
@@ -49,9 +50,9 @@ namespace E_Prescribing_API.Controllers
 
                 var roles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
-        {
-            new Claim("UserID", user.Id.ToString())
-        };
+                {
+                    new Claim("UserID", user.Id.ToString())
+                };
 
                 foreach (var role in roles)
                 {

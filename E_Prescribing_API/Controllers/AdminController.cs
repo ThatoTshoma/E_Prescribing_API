@@ -3,6 +3,7 @@ using E_Prescribing_API.Data.Services;
 using E_Prescribing_API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -36,8 +37,8 @@ namespace E_Prescribing_API.Controllers
             _logger = logger;
         }
 
-        [HttpPost("AddUser")]
-        public async Task<IActionResult> AddUser(UserCollection model)
+        [HttpPost("RegisterUser")]
+        public async Task<IActionResult> RegisterUser(UserCollection model)
         {
             try
             {
@@ -156,5 +157,116 @@ namespace E_Prescribing_API.Controllers
                 return StatusCode(500, "An unexpected error occurred. Please try again later.");
             }
         }
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser()
+        {
+            try
+            {
+                var users = await _userManager.Users.ToListAsync();
+                var userList = new List<object>();
+
+                foreach (var user in users)
+                {
+                    var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+
+                    if (role == "Nurse")
+                    {
+                        var nurse = await _db.Nurses.FirstOrDefaultAsync(n => n.UserId == user.Id);
+
+                        if (nurse != null)
+                        {
+                            userList.Add(new
+                            {
+                                nurse.NurseId,
+                                nurse.Name,
+                                nurse.Surname,
+                                nurse.FullName,
+                                nurse.ContactNumber,
+                                nurse.EmailAddress,
+                                nurse.RegistrationNumber,
+                                nurse.UserId,
+                                Role = role,
+                                Username = user.UserName,
+                                UserEmail = user.Email
+                            });
+                        }
+                    }
+                    else if (role == "Pharmacist")
+                    {
+                        var pharmacist = await _db.Pharmacists.FirstOrDefaultAsync(p => p.UserId == user.Id);
+
+                        if (pharmacist != null)
+                        {
+                            userList.Add(new
+                            {
+                                pharmacist.PharmacistId,
+                                pharmacist.Name,
+                                pharmacist.Surname,
+                                pharmacist.FullName,
+                                pharmacist.ContactNumber,
+                                pharmacist.EmailAddress,
+                                pharmacist.RegistrationNumber,
+                                pharmacist.UserId,
+                                Role = role,
+                                Username = user.UserName,
+                                UserEmail = user.Email
+                            });
+                        }
+                    }
+                    else if (role == "Surgeon")
+                    {
+                        var surgeon = await _db.Surgeons.FirstOrDefaultAsync(s => s.UserId == user.Id);
+
+                        if (surgeon != null)
+                        {
+                            userList.Add(new
+                            {
+                                surgeon.SurgeonId,
+                                surgeon.Name,
+                                surgeon.Surname,
+                                surgeon.FullName,
+                                surgeon.ContactNumber,
+                                surgeon.EmailAddress,
+                                surgeon.RegistrationNumber,
+                                surgeon.UserId,
+                                Role = role,
+                                Username = user.UserName,
+                                UserEmail = user.Email
+                            });
+                        }
+                    }
+                    else if (role == "Anaesthesiologist")
+                    {
+                        var anaesthesiologist = await _db.Anaesthesiologists.FirstOrDefaultAsync(a => a.UserId == user.Id);
+
+                        if (anaesthesiologist != null)
+                        {
+                            userList.Add(new
+                            {
+                                anaesthesiologist.AnaesthesiologistId,
+                                anaesthesiologist.Name,
+                                anaesthesiologist.Surname,
+                                anaesthesiologist.FullName,
+                                anaesthesiologist.ContactNumber,
+                                anaesthesiologist.EmailAddress,
+                                anaesthesiologist.RegistrationNumber,
+                                anaesthesiologist.UserId,
+                                Role = role,
+                                Username = user.UserName,
+                                UserEmail = user.Email
+                            });
+                        }
+                    }
+                }
+
+                return Ok(userList);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting user.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }
