@@ -12,6 +12,9 @@ namespace E_Prescribing_API.CollectionModel
 
 
         public List<Patient> Patients { get; set; }
+        public List<int> SelectedMedication { get; set; }
+        public List<int> SelectedCondition { get; set; }
+
         public int CurrentStep { get; set; }
     }
 }

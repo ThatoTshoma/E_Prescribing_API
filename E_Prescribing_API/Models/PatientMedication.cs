@@ -9,7 +9,5 @@ namespace E_Prescribing_API.Models
         public int PatientMedicationId { get; set; }
         public int PatientId { get; set; }
         public int MedicationId { get; set; }
-        [NotMapped]
-        public List<int> SelectedMedication { get; set; }
     }
 }

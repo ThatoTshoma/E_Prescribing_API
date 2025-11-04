@@ -54,42 +54,67 @@ namespace E_Prescribing_API.Controllers
         {
             try
             {
-                if (model == null || model.PatientMedication == null)
+                if (model == null || model.PatientMedication == null || model.PatientCondition == null)
                     return BadRequest("Invalid admission data.");
 
-
-                if (model.CurrentStep == 1)
+                switch (model.CurrentStep)
                 {
-                    if (model.PatientMedication.SelectedMedication != null && model.PatientMedication.SelectedMedication.Any())
-                    {
-                        foreach (var selectedMedicationId in model.PatientMedication.SelectedMedication)
+                    case 1:
+                        if (model.SelectedMedication != null && model.SelectedMedication.Any())
                         {
-                            var patientMedication = new PatientMedication
+                            foreach (var selectedMedicationId in model.SelectedMedication)
                             {
-                                MedicationId = selectedMedicationId,
-                                PatientId = model.PatientMedication.PatientId
-                            };
+                                var patientMedication = new PatientMedication
+                                {
+                                    MedicationId = selectedMedicationId,
+                                    PatientId = model.PatientMedication.PatientId
+                                };
 
-                            _db.PatientMedications.Add(patientMedication);
+                                _db.PatientMedications.Add(patientMedication);
+                            }
+
+                            await _db.SaveChangesAsync();
+
+                            return Ok(new
+                            {
+                                message = "Medications added successfully.",
+                                patientId = model.PatientMedication.PatientId,
+                                medications = model.SelectedMedication
+                            });
                         }
 
-                        await _db.SaveChangesAsync();
-
-                        return Ok(new
-                        {
-                            message = "Medications added successfully.",
-                            patientId = model.PatientMedication.PatientId,
-                            medications = model.PatientMedication.SelectedMedication
-                        });
-                    }
-                    else
-                    {
                         return BadRequest("No medications selected for this patient.");
-                    }
-                }
 
-                _logger.LogWarning("Unknown step {Step} in admission process", model.CurrentStep);
-                return BadRequest($"Invalid step: {model.CurrentStep}");
+                    case 2:
+                        if (model?.SelectedCondition != null && model.SelectedCondition.Any())
+                        {
+                            foreach (var selectedConditionId in model.SelectedCondition)
+                            {
+                                var patientCondition = new PatientCondition
+                                {
+                                    ConditionId = selectedConditionId,
+                                    PatientId = model.PatientCondition.PatientId
+                                };
+
+                                _db.PatientConditions.Add(patientCondition);
+                            }
+
+                            await _db.SaveChangesAsync();
+
+                            return Ok(new
+                            {
+                                message = "Conditions added successfully.",
+                                patientId = model.PatientCondition.PatientId,
+                                conditions = model.SelectedCondition
+                            });
+                        }
+
+                        return BadRequest("No conditions selected for this patient.");
+
+                    default:
+                        _logger.LogWarning("Unknown step {Step} in admission process", model.CurrentStep);
+                        return BadRequest($"Invalid step: {model.CurrentStep}");
+                }
             }
             catch (Exception ex)
             {
@@ -97,6 +122,7 @@ namespace E_Prescribing_API.Controllers
                 return StatusCode(500, "An unexpected error occurred. Please try again later.");
             }
         }
+
 
     }
 }

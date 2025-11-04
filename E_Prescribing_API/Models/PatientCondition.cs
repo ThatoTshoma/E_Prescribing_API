@@ -9,8 +9,5 @@ namespace E_Prescribing_API.Models
         public int PatientConditionId { get; set; }
         public int PatientId { get; set; }
         public int ConditionId { get; set; }
-
-        [NotMapped]
-        public List<int> SelectedCondition { get; set; }
     }
 }

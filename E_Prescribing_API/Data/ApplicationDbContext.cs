@@ -27,5 +27,6 @@ namespace E_Prescribing_API.Data
         public DbSet<MedicationIngredient> MedicationIngredients { get; set; }
         public DbSet<PatientMedication> PatientMedications { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<PatientCondition> PatientConditions { get; set; }
     }
 }
