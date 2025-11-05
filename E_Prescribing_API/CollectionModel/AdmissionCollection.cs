@@ -4,7 +4,7 @@ namespace E_Prescribing_API.CollectionModel
 {
     public class AdmissionCollection
     {
-        //public PatientAllergy PatientAllergy { get; set; }
+        public PatientAllergy PatientAllergy { get; set; }
         public PatientMedication PatientMedication { get; set; }
         public PatientCondition PatientCondition { get; set; }
         //public PatientBed PatientBed { get; set; }
@@ -14,6 +14,8 @@ namespace E_Prescribing_API.CollectionModel
         public List<Patient> Patients { get; set; }
         public List<int> SelectedMedication { get; set; }
         public List<int> SelectedCondition { get; set; }
+        public List<int> SelectedAllergy { get; set; }
+
 
         public int CurrentStep { get; set; }
     }

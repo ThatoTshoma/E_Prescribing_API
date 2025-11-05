@@ -66,7 +66,7 @@ namespace E_Prescribing_API.Controllers
 
                 await _userManager.AddToRoleAsync(user, model.Role);
 
-                var staff = new MedicalSaff
+                var staff = new MedicalStaff
                 {
                     UserId = user.Id,
                     Name = model.MedicalStaff.Name,

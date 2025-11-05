@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace E_Prescribing_API.Models
 {
-    public class MedicalSaff
+    public class MedicalStaff
     {
         [Key]
         public int StaffId { get; set; }

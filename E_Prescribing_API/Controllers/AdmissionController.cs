@@ -60,6 +60,31 @@ namespace E_Prescribing_API.Controllers
                 switch (model.CurrentStep)
                 {
                     case 1:
+                        if (model?.SelectedCondition != null && model.SelectedCondition.Any())
+                        {
+                            foreach (var selectedConditionId in model.SelectedCondition)
+                            {
+                                var patientCondition = new PatientCondition
+                                {
+                                    ConditionId = selectedConditionId,
+                                    PatientId = model.PatientCondition.PatientId
+                                };
+
+                                _db.PatientConditions.Add(patientCondition);
+                            }
+
+                            await _db.SaveChangesAsync();
+
+                            return Ok(new
+                            {
+                                message = "Conditions added successfully.",
+                                patientId = model.PatientCondition.PatientId,
+                                conditions = model.SelectedCondition
+                            });
+                        }
+
+                        return BadRequest("No conditions selected for this patient.");
+                    case 2:
                         if (model.SelectedMedication != null && model.SelectedMedication.Any())
                         {
                             foreach (var selectedMedicationId in model.SelectedMedication)
@@ -85,31 +110,31 @@ namespace E_Prescribing_API.Controllers
 
                         return BadRequest("No medications selected for this patient.");
 
-                    case 2:
-                        if (model?.SelectedCondition != null && model.SelectedCondition.Any())
+                    case 3:
+                        if (model.SelectedAllergy != null && model.SelectedAllergy.Any())
                         {
-                            foreach (var selectedConditionId in model.SelectedCondition)
+                            foreach (var selectedAllergyId in model.SelectedAllergy)
                             {
-                                var patientCondition = new PatientCondition
+                                var patientallergy = new PatientAllergy
                                 {
-                                    ConditionId = selectedConditionId,
-                                    PatientId = model.PatientCondition.PatientId
+                                    AllergyId = selectedAllergyId,
+                                    PatientId = model.PatientAllergy.PatientId
                                 };
 
-                                _db.PatientConditions.Add(patientCondition);
+                                _db.PatientAllergies.Add(patientallergy);
                             }
 
                             await _db.SaveChangesAsync();
 
                             return Ok(new
                             {
-                                message = "Conditions added successfully.",
-                                patientId = model.PatientCondition.PatientId,
-                                conditions = model.SelectedCondition
+                                message = "Allergies added successfully.",
+                                patientId = model.PatientAllergy.PatientId,
+                                allergies = model.SelectedAllergy
                             });
                         }
 
-                        return BadRequest("No conditions selected for this patient.");
+                        return BadRequest("No allergies selected for this patient.");
 
                     default:
                         _logger.LogWarning("Unknown step {Step} in admission process", model.CurrentStep);

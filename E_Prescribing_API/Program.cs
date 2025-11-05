@@ -20,6 +20,8 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IPasswordGenerator, PasswordGenerator>();
 builder.Services.AddScoped<UsernameGenerator>();
+builder.Services.AddScoped<Alerts>();
+
 
 builder.Logging.AddFile("Logs/app.log");
 

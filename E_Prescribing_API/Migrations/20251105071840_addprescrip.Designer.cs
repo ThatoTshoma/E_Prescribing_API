@@ -4,6 +4,7 @@ using E_Prescribing_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Prescribing_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251105071840_addprescrip")]
+    partial class addprescrip
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -323,33 +326,6 @@ namespace E_Prescribing_API.Migrations
                     b.ToTable("MedicationIngredients");
                 });
 
-            modelBuilder.Entity("E_Prescribing_API.Models.MedicationInteraction", b =>
-                {
-                    b.Property<int>("InteractionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InteractionId"));
-
-                    b.Property<int>("ActiveIngredient1Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ActiveIngredient2Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("InteractionId");
-
-                    b.HasIndex("ActiveIngredient1Id");
-
-                    b.HasIndex("ActiveIngredient2Id");
-
-                    b.ToTable("MedicationInteractions");
-                });
-
             modelBuilder.Entity("E_Prescribing_API.Models.Patient", b =>
                 {
                     b.Property<int>("PatientId")
@@ -404,29 +380,6 @@ namespace E_Prescribing_API.Migrations
                     b.HasKey("PatientId");
 
                     b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.PatientAllergy", b =>
-                {
-                    b.Property<int>("AllergyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AllergyId"));
-
-                    b.Property<int>("ActiveIngredientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AllergyId");
-
-                    b.HasIndex("ActiveIngredientId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("PatientAllergies");
                 });
 
             modelBuilder.Entity("E_Prescribing_API.Models.PatientCondition", b =>
@@ -509,9 +462,6 @@ namespace E_Prescribing_API.Migrations
                     b.Property<int?>("DispenserId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsUrgent")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -525,6 +475,9 @@ namespace E_Prescribing_API.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isUrgent")
+                        .HasColumnType("bit");
 
                     b.HasKey("PrescriptionId");
 
@@ -719,44 +672,6 @@ namespace E_Prescribing_API.Migrations
                         .IsRequired();
 
                     b.Navigation("Suburb");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.MedicationInteraction", b =>
-                {
-                    b.HasOne("E_Prescribing_API.Models.ActiveIngredient", "ActiveIngredient1")
-                        .WithMany()
-                        .HasForeignKey("ActiveIngredient1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("E_Prescribing_API.Models.ActiveIngredient", "ActiveIngredient2")
-                        .WithMany()
-                        .HasForeignKey("ActiveIngredient2Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ActiveIngredient1");
-
-                    b.Navigation("ActiveIngredient2");
-                });
-
-            modelBuilder.Entity("E_Prescribing_API.Models.PatientAllergy", b =>
-                {
-                    b.HasOne("E_Prescribing_API.Models.ActiveIngredient", "ActiveIngredient")
-                        .WithMany()
-                        .HasForeignKey("ActiveIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("E_Prescribing_API.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ActiveIngredient");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("E_Prescribing_API.Models.PatientCondition", b =>

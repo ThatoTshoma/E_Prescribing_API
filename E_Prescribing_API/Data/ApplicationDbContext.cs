@@ -18,7 +18,7 @@ namespace E_Prescribing_API.Data
         public DbSet<Suburb> Suburbs { get; set; }
         public DbSet<Facility> Facilities { get; set; }
         public DbSet<FacilityType> FacilitiesTypes { get; set; }
-        public DbSet<MedicalSaff> MedicalStaffs { get; set; }
+        public DbSet<MedicalStaff> MedicalStaffs { get; set; }
         public DbSet<ActiveIngredient> ActiveIngredients { get; set; }
         public DbSet<ConditionDiagnosis> ConditionDiagnosis { get; set; }
         public DbSet<ContraIndication> ContraIndications { get; set; }
@@ -28,5 +28,9 @@ namespace E_Prescribing_API.Data
         public DbSet<PatientMedication> PatientMedications { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<PatientCondition> PatientConditions { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<PrescribedMedication> PrescribedMedications { get;set; }
+        public DbSet<PatientAllergy> PatientAllergies { get; set; }
+        public DbSet<MedicationInteraction> MedicationInteractions { get; set; }
     }
 }

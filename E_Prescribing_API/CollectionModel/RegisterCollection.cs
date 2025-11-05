@@ -6,7 +6,7 @@ namespace E_Prescribing_API.CollectionModel
     public class RegisterCollection
     {
         public ApplicationUser ApplicationUser { get; set; }
-        public MedicalSaff MedicalStaff { get; set; }
+        public MedicalStaff MedicalStaff { get; set; }
         public string Role { get; set; }
     }
 }
