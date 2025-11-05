@@ -1228,3 +1228,220 @@ VALUES (@p0, @p1, @p2, @p3);" (0723d8ff)
 2025-11-05T13:13:55.4954441+02:00 0HNGSBH9FMCPR:0000000F [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 8189.0098ms (afa2e885)
 2025-11-05T13:13:55.4962976+02:00 0HNGSBH9FMCPR:0000000F [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
 2025-11-05T13:13:55.6200247+02:00 0HNGSBH9FMCPR:0000000F [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 200 null "application/json; charset=utf-8" 8430.7806ms (74253ad3)
+2025-11-05T13:51:42.4130350+02:00  [INF] User profile is available. Using '"C:\Users\ThatoTs\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2025-11-05T13:51:42.6731327+02:00  [INF] Now listening on: "https://localhost:7150" (d826f4b8)
+2025-11-05T13:51:42.6765842+02:00  [INF] Now listening on: "http://localhost:5031" (d826f4b8)
+2025-11-05T13:51:42.7513405+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2025-11-05T13:51:42.7538870+02:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2025-11-05T13:51:42.7564664+02:00  [INF] Content root path: "D:\HomeSpace\E_Prescribing_API\E_Prescribing_API" (cc26f24e)
+2025-11-05T13:51:43.7134482+02:00 0HNGSC6O62OP6:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - null null (d509f86a)
+2025-11-05T13:51:43.8980165+02:00 0HNGSC6O62OP6:00000003 [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:43.9035970+02:00 0HNGSC6O62OP6:00000003 [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:43.9259113+02:00 0HNGSC6O62OP6:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - 301 0 null 220.6519ms (74253ad3)
+2025-11-05T13:51:43.9345921+02:00 0HNGSC6O62OP6:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - null null (d509f86a)
+2025-11-05T13:51:43.9465259+02:00 0HNGSC6O62OP6:00000005 [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:43.9491034+02:00 0HNGSC6O62OP6:00000005 [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:44.0336336+02:00 0HNGSC6O62OP6:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 99.1748ms (74253ad3)
+2025-11-05T13:51:44.0545954+02:00 0HNGSC6O62OP6:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - null null (d509f86a)
+2025-11-05T13:51:44.0586538+02:00 0HNGSC6O62OP6:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2025-11-05T13:51:44.0722696+02:00 0HNGSC6O62OP6:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - 200 13770 "application/javascript; charset=utf-8" 16.9755ms (74253ad3)
+2025-11-05T13:51:44.1193515+02:00 0HNGSC6O62OP6:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 65.0691ms (74253ad3)
+2025-11-05T13:51:44.2537946+02:00 0HNGSC6O62OP6:0000000B [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2025-11-05T13:51:44.2569405+02:00 0HNGSC6O62OP6:0000000B [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:44.2608533+02:00 0HNGSC6O62OP6:0000000B [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:51:44.3959804+02:00 0HNGSC6O62OP6:0000000B [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 143.2464ms (74253ad3)
+2025-11-05T13:52:05.5158823+02:00 0HNGSC6O62OP6:0000000D [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 1497 (d509f86a)
+2025-11-05T13:52:05.5207994+02:00 0HNGSC6O62OP6:0000000D [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:52:05.5245474+02:00 0HNGSC6O62OP6:0000000D [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:52:05.5298316+02:00 0HNGSC6O62OP6:0000000D [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T13:52:05.5706554+02:00 0HNGSC6O62OP6:0000000D [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T13:52:09.3754838+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [m].[StaffId], [m].[ContactNumber], [m].[FacilityId], [m].[FullName], [m].[Name], [m].[RegistrationNumber], [m].[Surname], [m].[UserId]
+FROM [MedicalStaffs] AS [m]
+WHERE [m].[UserId] = 10" (0723d8ff)
+2025-11-05T13:52:09.8585995+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("83"ms) [Parameters=["@__8__locals1_patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[IngredientName], [t].[MedicationName]
+FROM (
+    SELECT DISTINCT [a].[Name] AS [IngredientName], [m0].[Name] AS [MedicationName]
+    FROM [PatientAllergies] AS [p]
+    INNER JOIN [MedicationIngredients] AS [m] ON [p].[ActiveIngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [ActiveIngredients] AS [a] ON [m].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [Medications] AS [m0] ON [m].[MedicationId] = [m0].[MedicationId]
+    WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND [m].[MedicationId] IN (
+        SELECT [m1].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m1]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:52:09.9271723+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("38"ms) [Parameters=["@__patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Name]
+FROM (
+    SELECT DISTINCT [a].[Name]
+    FROM [ContraIndications] AS [c]
+    INNER JOIN [ActiveIngredients] AS [a] ON [c].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [MedicationIngredients] AS [m] ON [a].[IngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [PatientConditions] AS [p] ON @__patientId_0 = [p].[PatientId] AND [c].[ConditionDiagnosisId] = [p].[ConditionId]
+    WHERE [m].[MedicationId] IN (
+        SELECT [m0].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m0]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:52:09.9991323+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("36"ms) [Parameters=["@__newMedicationIdsList_1='?' (Size = 4000), @__8__locals1_patientId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT DISTINCT [m1].[Description]
+FROM [PatientMedications] AS [p]
+INNER JOIN [MedicationIngredients] AS [m] ON [p].[MedicationId] = [m].[MedicationId]
+INNER JOIN (
+    SELECT [m0].[ActiveIngredientId]
+    FROM [MedicationIngredients] AS [m0]
+    WHERE [m0].[MedicationId] IN (
+        SELECT [n].[value]
+        FROM OPENJSON(@__newMedicationIdsList_1) WITH ([value] int '$') AS [n]
+    )
+) AS [t] ON [m].[ActiveIngredientId] <> [t].[ActiveIngredientId]
+CROSS JOIN [MedicationInteractions] AS [m1]
+WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND (([m1].[ActiveIngredient1Id] = [m].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [t].[ActiveIngredientId]) OR ([m1].[ActiveIngredient1Id] = [t].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [m].[ActiveIngredientId]))" (0723d8ff)
+2025-11-05T13:52:10.3637650+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("18"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Prescriptions] ([Date], [DispenserId], [IsUrgent], [Note], [PatientId], [PrescriberId], [Status])
+OUTPUT INSERTED.[PrescriptionId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);" (0723d8ff)
+2025-11-05T13:52:10.4508214+02:00 0HNGSC6O62OP6:0000000D [INF] Executed DbCommand ("5"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PrescribedMedications] ([Instruction], [MedicationId], [PrescriptionId], [Quantity])
+OUTPUT INSERTED.[PrescribedMedicationId]
+VALUES (@p0, @p1, @p2, @p3);" (0723d8ff)
+2025-11-05T13:52:10.4631673+02:00 0HNGSC6O62OP6:0000000D [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType12`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2025-11-05T13:52:10.4776214+02:00 0HNGSC6O62OP6:0000000D [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 4900.6556ms (afa2e885)
+2025-11-05T13:52:10.4786085+02:00 0HNGSC6O62OP6:0000000D [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T13:52:10.4901687+02:00 0HNGSC6O62OP6:0000000D [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 200 null "application/json; charset=utf-8" 4974.4283ms (74253ad3)
+2025-11-05T13:53:16.7146460+02:00 0HNGSC6O62OP6:0000000F [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 1497 (d509f86a)
+2025-11-05T13:53:16.7198289+02:00 0HNGSC6O62OP6:0000000F [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:53:16.7230094+02:00 0HNGSC6O62OP6:0000000F [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:53:16.7234495+02:00 0HNGSC6O62OP6:0000000F [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T13:53:16.7243742+02:00 0HNGSC6O62OP6:0000000F [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T13:53:16.7778789+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [m].[StaffId], [m].[ContactNumber], [m].[FacilityId], [m].[FullName], [m].[Name], [m].[RegistrationNumber], [m].[Surname], [m].[UserId]
+FROM [MedicalStaffs] AS [m]
+WHERE [m].[UserId] = 10" (0723d8ff)
+2025-11-05T13:53:16.8470890+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("62"ms) [Parameters=["@__8__locals1_patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[IngredientName], [t].[MedicationName]
+FROM (
+    SELECT DISTINCT [a].[Name] AS [IngredientName], [m0].[Name] AS [MedicationName]
+    FROM [PatientAllergies] AS [p]
+    INNER JOIN [MedicationIngredients] AS [m] ON [p].[ActiveIngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [ActiveIngredients] AS [a] ON [m].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [Medications] AS [m0] ON [m].[MedicationId] = [m0].[MedicationId]
+    WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND [m].[MedicationId] IN (
+        SELECT [m1].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m1]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:53:16.8805947+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("28"ms) [Parameters=["@__patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Name]
+FROM (
+    SELECT DISTINCT [a].[Name]
+    FROM [ContraIndications] AS [c]
+    INNER JOIN [ActiveIngredients] AS [a] ON [c].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [MedicationIngredients] AS [m] ON [a].[IngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [PatientConditions] AS [p] ON @__patientId_0 = [p].[PatientId] AND [c].[ConditionDiagnosisId] = [p].[ConditionId]
+    WHERE [m].[MedicationId] IN (
+        SELECT [m0].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m0]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:53:16.9299760+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("42"ms) [Parameters=["@__newMedicationIdsList_1='?' (Size = 4000), @__8__locals1_patientId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT DISTINCT [m1].[Description]
+FROM [PatientMedications] AS [p]
+INNER JOIN [MedicationIngredients] AS [m] ON [p].[MedicationId] = [m].[MedicationId]
+INNER JOIN (
+    SELECT [m0].[ActiveIngredientId]
+    FROM [MedicationIngredients] AS [m0]
+    WHERE [m0].[MedicationId] IN (
+        SELECT [n].[value]
+        FROM OPENJSON(@__newMedicationIdsList_1) WITH ([value] int '$') AS [n]
+    )
+) AS [t] ON [m].[ActiveIngredientId] <> [t].[ActiveIngredientId]
+CROSS JOIN [MedicationInteractions] AS [m1]
+WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND (([m1].[ActiveIngredient1Id] = [m].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [t].[ActiveIngredientId]) OR ([m1].[ActiveIngredient1Id] = [t].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [m].[ActiveIngredientId]))" (0723d8ff)
+2025-11-05T13:53:16.9462972+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("9"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Prescriptions] ([Date], [DispenserId], [IsUrgent], [Note], [PatientId], [PrescriberId], [Status])
+OUTPUT INSERTED.[PrescriptionId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);" (0723d8ff)
+2025-11-05T13:53:16.9568560+02:00 0HNGSC6O62OP6:0000000F [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PrescribedMedications] ([Instruction], [MedicationId], [PrescriptionId], [Quantity])
+OUTPUT INSERTED.[PrescribedMedicationId]
+VALUES (@p0, @p1, @p2, @p3);" (0723d8ff)
+2025-11-05T13:53:16.9581012+02:00 0HNGSC6O62OP6:0000000F [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType12`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2025-11-05T13:53:16.9584581+02:00 0HNGSC6O62OP6:0000000F [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 233.9337ms (afa2e885)
+2025-11-05T13:53:16.9585045+02:00 0HNGSC6O62OP6:0000000F [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T13:53:16.9587379+02:00 0HNGSC6O62OP6:0000000F [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 200 null "application/json; charset=utf-8" 244.1963ms (74253ad3)
+2025-11-05T13:53:29.8859851+02:00 0HNGSC6O62OP6:00000011 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 1497 (d509f86a)
+2025-11-05T13:53:29.8865681+02:00 0HNGSC6O62OP6:00000011 [INF] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:53:29.8904021+02:00 0HNGSC6O62OP6:00000011 [INF] "Identity.BearerAndApplication" was not authenticated. Failure message: "Unprotect ticket failed" (48071232)
+2025-11-05T13:53:29.8905278+02:00 0HNGSC6O62OP6:00000011 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T13:53:29.8906517+02:00 0HNGSC6O62OP6:00000011 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T13:53:30.0473143+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [m].[StaffId], [m].[ContactNumber], [m].[FacilityId], [m].[FullName], [m].[Name], [m].[RegistrationNumber], [m].[Surname], [m].[UserId]
+FROM [MedicalStaffs] AS [m]
+WHERE [m].[UserId] = 10" (0723d8ff)
+2025-11-05T13:53:30.0546792+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("2"ms) [Parameters=["@__8__locals1_patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[IngredientName], [t].[MedicationName]
+FROM (
+    SELECT DISTINCT [a].[Name] AS [IngredientName], [m0].[Name] AS [MedicationName]
+    FROM [PatientAllergies] AS [p]
+    INNER JOIN [MedicationIngredients] AS [m] ON [p].[ActiveIngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [ActiveIngredients] AS [a] ON [m].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [Medications] AS [m0] ON [m].[MedicationId] = [m0].[MedicationId]
+    WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND [m].[MedicationId] IN (
+        SELECT [m1].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m1]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:53:30.0646373+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("2"ms) [Parameters=["@__patientId_0='?' (DbType = Int32), @__medicationIdsList_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Name]
+FROM (
+    SELECT DISTINCT [a].[Name]
+    FROM [ContraIndications] AS [c]
+    INNER JOIN [ActiveIngredients] AS [a] ON [c].[ActiveIngredientId] = [a].[IngredientId]
+    INNER JOIN [MedicationIngredients] AS [m] ON [a].[IngredientId] = [m].[ActiveIngredientId]
+    INNER JOIN [PatientConditions] AS [p] ON @__patientId_0 = [p].[PatientId] AND [c].[ConditionDiagnosisId] = [p].[ConditionId]
+    WHERE [m].[MedicationId] IN (
+        SELECT [m0].[value]
+        FROM OPENJSON(@__medicationIdsList_1) WITH ([value] int '$') AS [m0]
+    )
+) AS [t]" (0723d8ff)
+2025-11-05T13:53:30.0800129+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("7"ms) [Parameters=["@__newMedicationIdsList_1='?' (Size = 4000), @__8__locals1_patientId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT DISTINCT [m1].[Description]
+FROM [PatientMedications] AS [p]
+INNER JOIN [MedicationIngredients] AS [m] ON [p].[MedicationId] = [m].[MedicationId]
+INNER JOIN (
+    SELECT [m0].[ActiveIngredientId]
+    FROM [MedicationIngredients] AS [m0]
+    WHERE [m0].[MedicationId] IN (
+        SELECT [n].[value]
+        FROM OPENJSON(@__newMedicationIdsList_1) WITH ([value] int '$') AS [n]
+    )
+) AS [t] ON [m].[ActiveIngredientId] <> [t].[ActiveIngredientId]
+CROSS JOIN [MedicationInteractions] AS [m1]
+WHERE [p].[PatientId] = @__8__locals1_patientId_0 AND (([m1].[ActiveIngredient1Id] = [m].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [t].[ActiveIngredientId]) OR ([m1].[ActiveIngredient1Id] = [t].[ActiveIngredientId] AND [m1].[ActiveIngredient2Id] = [m].[ActiveIngredientId]))" (0723d8ff)
+2025-11-05T13:53:30.0912910+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("6"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Prescriptions] ([Date], [DispenserId], [IsUrgent], [Note], [PatientId], [PrescriberId], [Status])
+OUTPUT INSERTED.[PrescriptionId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);" (0723d8ff)
+2025-11-05T13:53:30.0985082+02:00 0HNGSC6O62OP6:00000011 [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PrescribedMedications] ([Instruction], [MedicationId], [PrescriptionId], [Quantity])
+OUTPUT INSERTED.[PrescribedMedicationId]
+VALUES (@p0, @p1, @p2, @p3);" (0723d8ff)
+2025-11-05T13:53:30.0993069+02:00 0HNGSC6O62OP6:00000011 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType12`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2025-11-05T13:53:30.0996667+02:00 0HNGSC6O62OP6:00000011 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 208.9187ms (afa2e885)
+2025-11-05T13:53:30.0997847+02:00 0HNGSC6O62OP6:00000011 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T13:53:30.1000926+02:00 0HNGSC6O62OP6:00000011 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 200 null "application/json; charset=utf-8" 214.5396ms (74253ad3)

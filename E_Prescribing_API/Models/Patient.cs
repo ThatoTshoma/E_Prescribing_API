@@ -28,10 +28,10 @@ namespace E_Prescribing_API.Models
         public string? AddressLine1 { get; set; }
         [Display(Name = "Address Line 2")]
         public string? AddressLine2 { get; set; }
-
+        public Suburb Suburb { get; set; }
         public int? SuburbId { get; set; }
-
-        public int? MedicalSaffId { get; set; }
+        public MedicalStaff MedicalStaff { get; set; }
+        public int? MedicalStaffId { get; set; }
 
 
         public List<PatientCondition> PatientConditions { get; set; }
