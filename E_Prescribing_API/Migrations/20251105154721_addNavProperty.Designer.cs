@@ -4,6 +4,7 @@ using E_Prescribing_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Prescribing_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251105154721_addNavProperty")]
+    partial class addNavProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -405,6 +408,9 @@ namespace E_Prescribing_API.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
+                    b.Property<int?>("MedicalStaffId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -417,6 +423,8 @@ namespace E_Prescribing_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PatientId");
+
+                    b.HasIndex("MedicalStaffId");
 
                     b.HasIndex("SuburbId");
 
@@ -858,9 +866,15 @@ namespace E_Prescribing_API.Migrations
 
             modelBuilder.Entity("E_Prescribing_API.Models.Patient", b =>
                 {
+                    b.HasOne("E_Prescribing_API.Models.MedicalStaff", "MedicalStaff")
+                        .WithMany()
+                        .HasForeignKey("MedicalStaffId");
+
                     b.HasOne("E_Prescribing_API.Models.Suburb", "Suburb")
                         .WithMany()
                         .HasForeignKey("SuburbId");
+
+                    b.Navigation("MedicalStaff");
 
                     b.Navigation("Suburb");
                 });

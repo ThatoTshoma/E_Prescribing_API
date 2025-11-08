@@ -1445,3 +1445,572 @@ VALUES (@p0, @p1, @p2, @p3);" (0723d8ff)
 2025-11-05T13:53:30.0996667+02:00 0HNGSC6O62OP6:00000011 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 208.9187ms (afa2e885)
 2025-11-05T13:53:30.0997847+02:00 0HNGSC6O62OP6:00000011 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
 2025-11-05T13:53:30.1000926+02:00 0HNGSC6O62OP6:00000011 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 200 null "application/json; charset=utf-8" 214.5396ms (74253ad3)
+2025-11-05T17:47:52.3241923+02:00  [INF] Executed DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:47:52.3578126+02:00  [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:47:52.3610753+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:47:52.3631976+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:47:52.3831087+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2025-11-05T17:47:52.4074382+02:00  [INF] Applying migration '"20251105154721_addNavProperty"'. (0e2ac64d)
+2025-11-05T17:47:53.1728015+02:00  [INF] Executed DbCommand ("639"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""EXEC sp_rename N'[Patients].[MedicalSaffId]', N'MedicalStaffId', N'COLUMN';" (0723d8ff)
+2025-11-05T17:47:53.2003393+02:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Suburbs_CityId] ON [Suburbs] ([CityId]);" (0723d8ff)
+2025-11-05T17:47:53.2125233+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_MedicationId] ON [PrescribedMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:47:53.2231667+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_PrescriptionId] ON [PrescribedMedications] ([PrescriptionId]);" (0723d8ff)
+2025-11-05T17:47:53.2346592+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_MedicalStaffId] ON [Patients] ([MedicalStaffId]);" (0723d8ff)
+2025-11-05T17:47:53.2484045+02:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_SuburbId] ON [Patients] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:47:53.2630997+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_MedicationId] ON [PatientMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:47:53.2772705+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_PatientId] ON [PatientMedications] ([PatientId]);" (0723d8ff)
+2025-11-05T17:47:53.2933142+02:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientConditions_ConditionId] ON [PatientConditions] ([ConditionId]);" (0723d8ff)
+2025-11-05T17:47:53.3076171+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Medications_DosageFormId] ON [Medications] ([DosageFormId]);" (0723d8ff)
+2025-11-05T17:47:53.3186807+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_ActiveIngredientId] ON [MedicationIngredients] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:47:53.3310113+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_MedicationId] ON [MedicationIngredients] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:47:53.3455870+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_FacilityId] ON [MedicalStaffs] ([FacilityId]);" (0723d8ff)
+2025-11-05T17:47:53.3596784+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_UserId] ON [MedicalStaffs] ([UserId]);" (0723d8ff)
+2025-11-05T17:47:53.3669174+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Facilities_FacilityTypeId] ON [Facilities] ([FacilityTypeId]);" (0723d8ff)
+2025-11-05T17:47:53.3738060+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ActiveIngredientId] ON [ContraIndications] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:47:53.9423033+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ConditionDiagnosisId] ON [ContraIndications] ([ConditionDiagnosisId]);" (0723d8ff)
+2025-11-05T17:47:53.9672230+02:00  [INF] Executed DbCommand ("24"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Cities_ProvinceId] ON [Cities] ([ProvinceId]);" (0723d8ff)
+2025-11-05T17:47:53.9814517+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Cities] ADD CONSTRAINT [FK_Cities_Provinces_ProvinceId] FOREIGN KEY ([ProvinceId]) REFERENCES [Provinces] ([ProvinceId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:53.9928528+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:54.0059038+02:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ConditionDiagnosis_ConditionDiagnosisId] FOREIGN KEY ([ConditionDiagnosisId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:54.0224272+02:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Facilities] ADD CONSTRAINT [FK_Facilities_FacilitiesTypes_FacilityTypeId] FOREIGN KEY ([FacilityTypeId]) REFERENCES [FacilitiesTypes] ([FacilityTypeId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:54.0373647+02:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1495851+02:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_Facilities_FacilityId] FOREIGN KEY ([FacilityId]) REFERENCES [Facilities] ([FacilityId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1564104+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1617289+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1708763+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Medications] ADD CONSTRAINT [FK_Medications_DosageForms_DosageFormId] FOREIGN KEY ([DosageFormId]) REFERENCES [DosageForms] ([DosageId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1776227+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientConditions] ADD CONSTRAINT [FK_PatientConditions_ConditionDiagnosis_ConditionId] FOREIGN KEY ([ConditionId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1835197+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.1888916+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Patients_PatientId] FOREIGN KEY ([PatientId]) REFERENCES [Patients] ([PatientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:47:55.9997379+02:00  [INF] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_MedicalStaffs_MedicalStaffId] FOREIGN KEY ([MedicalStaffId]) REFERENCES [MedicalStaffs] ([StaffId]);" (0723d8ff)
+2025-11-05T17:47:56.0079949+02:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_Suburbs_SuburbId] FOREIGN KEY ([SuburbId]) REFERENCES [Suburbs] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:47:56.0392554+02:00  [ERR] Failed executing DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PrescribedMedications] ADD CONSTRAINT [FK_PrescribedMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (627a98df)
+2025-11-05T17:53:19.0665791+02:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:53:19.1123076+02:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:53:19.1150008+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:53:19.1157486+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:53:19.1347153+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2025-11-05T17:53:19.1569310+02:00  [INF] Applying migration '"20251105154721_addNavProperty"'. (0e2ac64d)
+2025-11-05T17:53:19.7869131+02:00  [INF] Executed DbCommand ("495"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""EXEC sp_rename N'[Patients].[MedicalSaffId]', N'MedicalStaffId', N'COLUMN';" (0723d8ff)
+2025-11-05T17:53:19.8082804+02:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Suburbs_CityId] ON [Suburbs] ([CityId]);" (0723d8ff)
+2025-11-05T17:53:19.8221906+02:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_MedicationId] ON [PrescribedMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:53:19.8327761+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_PrescriptionId] ON [PrescribedMedications] ([PrescriptionId]);" (0723d8ff)
+2025-11-05T17:53:19.8448767+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_MedicalStaffId] ON [Patients] ([MedicalStaffId]);" (0723d8ff)
+2025-11-05T17:53:19.8597453+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_SuburbId] ON [Patients] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:53:19.8719867+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_MedicationId] ON [PatientMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:53:19.8778401+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_PatientId] ON [PatientMedications] ([PatientId]);" (0723d8ff)
+2025-11-05T17:53:19.8901798+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientConditions_ConditionId] ON [PatientConditions] ([ConditionId]);" (0723d8ff)
+2025-11-05T17:53:19.9024951+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Medications_DosageFormId] ON [Medications] ([DosageFormId]);" (0723d8ff)
+2025-11-05T17:53:19.9310003+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_ActiveIngredientId] ON [MedicationIngredients] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:53:19.9432521+02:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_MedicationId] ON [MedicationIngredients] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:53:19.9569451+02:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_FacilityId] ON [MedicalStaffs] ([FacilityId]);" (0723d8ff)
+2025-11-05T17:53:19.9748282+02:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_UserId] ON [MedicalStaffs] ([UserId]);" (0723d8ff)
+2025-11-05T17:53:19.9838705+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Facilities_FacilityTypeId] ON [Facilities] ([FacilityTypeId]);" (0723d8ff)
+2025-11-05T17:53:19.9910351+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ActiveIngredientId] ON [ContraIndications] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:53:19.9964850+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ConditionDiagnosisId] ON [ContraIndications] ([ConditionDiagnosisId]);" (0723d8ff)
+2025-11-05T17:53:20.0036084+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Cities_ProvinceId] ON [Cities] ([ProvinceId]);" (0723d8ff)
+2025-11-05T17:53:20.0150391+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Cities] ADD CONSTRAINT [FK_Cities_Provinces_ProvinceId] FOREIGN KEY ([ProvinceId]) REFERENCES [Provinces] ([ProvinceId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.0643372+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.0734643+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ConditionDiagnosis_ConditionDiagnosisId] FOREIGN KEY ([ConditionDiagnosisId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.0837144+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Facilities] ADD CONSTRAINT [FK_Facilities_FacilitiesTypes_FacilityTypeId] FOREIGN KEY ([FacilityTypeId]) REFERENCES [FacilitiesTypes] ([FacilityTypeId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.0932906+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.1039221+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_Facilities_FacilityId] FOREIGN KEY ([FacilityId]) REFERENCES [Facilities] ([FacilityId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.1092241+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:21.1147529+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:22.1831505+02:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Medications] ADD CONSTRAINT [FK_Medications_DosageForms_DosageFormId] FOREIGN KEY ([DosageFormId]) REFERENCES [DosageForms] ([DosageId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:22.1897630+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientConditions] ADD CONSTRAINT [FK_PatientConditions_ConditionDiagnosis_ConditionId] FOREIGN KEY ([ConditionId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:22.1975801+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:22.2052624+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Patients_PatientId] FOREIGN KEY ([PatientId]) REFERENCES [Patients] ([PatientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:53:22.2164740+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_MedicalStaffs_MedicalStaffId] FOREIGN KEY ([MedicalStaffId]) REFERENCES [MedicalStaffs] ([StaffId]);" (0723d8ff)
+2025-11-05T17:53:22.2282243+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_Suburbs_SuburbId] FOREIGN KEY ([SuburbId]) REFERENCES [Suburbs] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:53:22.2565665+02:00  [ERR] Failed executing DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PrescribedMedications] ADD CONSTRAINT [FK_PrescribedMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (627a98df)
+2025-11-05T17:55:50.1712104+02:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:55:50.2123471+02:00  [INF] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:55:50.2160190+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T17:55:50.2171235+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T17:55:50.2330746+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2025-11-05T17:55:50.2495186+02:00  [INF] Applying migration '"20251105154721_addNavProperty"'. (0e2ac64d)
+2025-11-05T17:55:50.7631073+02:00  [INF] Executed DbCommand ("436"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""EXEC sp_rename N'[Patients].[MedicalSaffId]', N'MedicalStaffId', N'COLUMN';" (0723d8ff)
+2025-11-05T17:55:50.7778350+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Suburbs_CityId] ON [Suburbs] ([CityId]);" (0723d8ff)
+2025-11-05T17:55:50.7800317+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_MedicationId] ON [PrescribedMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:55:50.7814968+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PrescribedMedications_PrescriptionId] ON [PrescribedMedications] ([PrescriptionId]);" (0723d8ff)
+2025-11-05T17:55:50.7863143+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_MedicalStaffId] ON [Patients] ([MedicalStaffId]);" (0723d8ff)
+2025-11-05T17:55:50.7901580+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Patients_SuburbId] ON [Patients] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:55:50.7945693+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_MedicationId] ON [PatientMedications] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:55:50.7981351+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientMedications_PatientId] ON [PatientMedications] ([PatientId]);" (0723d8ff)
+2025-11-05T17:55:50.8021292+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PatientConditions_ConditionId] ON [PatientConditions] ([ConditionId]);" (0723d8ff)
+2025-11-05T17:55:50.8067362+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Medications_DosageFormId] ON [Medications] ([DosageFormId]);" (0723d8ff)
+2025-11-05T17:55:50.8113178+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_ActiveIngredientId] ON [MedicationIngredients] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:55:50.8151045+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicationIngredients_MedicationId] ON [MedicationIngredients] ([MedicationId]);" (0723d8ff)
+2025-11-05T17:55:50.8205825+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_FacilityId] ON [MedicalStaffs] ([FacilityId]);" (0723d8ff)
+2025-11-05T17:55:50.8240877+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_MedicalStaffs_UserId] ON [MedicalStaffs] ([UserId]);" (0723d8ff)
+2025-11-05T17:55:50.8288297+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Facilities_FacilityTypeId] ON [Facilities] ([FacilityTypeId]);" (0723d8ff)
+2025-11-05T17:55:50.8339115+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ActiveIngredientId] ON [ContraIndications] ([ActiveIngredientId]);" (0723d8ff)
+2025-11-05T17:55:50.8375445+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ContraIndications_ConditionDiagnosisId] ON [ContraIndications] ([ConditionDiagnosisId]);" (0723d8ff)
+2025-11-05T17:55:50.8416769+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Cities_ProvinceId] ON [Cities] ([ProvinceId]);" (0723d8ff)
+2025-11-05T17:55:50.8523016+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Cities] ADD CONSTRAINT [FK_Cities_Provinces_ProvinceId] FOREIGN KEY ([ProvinceId]) REFERENCES [Provinces] ([ProvinceId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.0197855+02:00  [INF] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.0775288+02:00  [INF] Executed DbCommand ("57"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [ContraIndications] ADD CONSTRAINT [FK_ContraIndications_ConditionDiagnosis_ConditionDiagnosisId] FOREIGN KEY ([ConditionDiagnosisId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.0918105+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Facilities] ADD CONSTRAINT [FK_Facilities_FacilitiesTypes_FacilityTypeId] FOREIGN KEY ([FacilityTypeId]) REFERENCES [FacilitiesTypes] ([FacilityTypeId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.1199170+02:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.1262465+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicalStaffs] ADD CONSTRAINT [FK_MedicalStaffs_Facilities_FacilityId] FOREIGN KEY ([FacilityId]) REFERENCES [Facilities] ([FacilityId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:52.1370321+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_ActiveIngredients_ActiveIngredientId] FOREIGN KEY ([ActiveIngredientId]) REFERENCES [ActiveIngredients] ([IngredientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6181658+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [MedicationIngredients] ADD CONSTRAINT [FK_MedicationIngredients_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6273714+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Medications] ADD CONSTRAINT [FK_Medications_DosageForms_DosageFormId] FOREIGN KEY ([DosageFormId]) REFERENCES [DosageForms] ([DosageId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6312042+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientConditions] ADD CONSTRAINT [FK_PatientConditions_ConditionDiagnosis_ConditionId] FOREIGN KEY ([ConditionId]) REFERENCES [ConditionDiagnosis] ([ConditionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6354072+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6400632+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PatientMedications] ADD CONSTRAINT [FK_PatientMedications_Patients_PatientId] FOREIGN KEY ([PatientId]) REFERENCES [Patients] ([PatientId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:53.6489971+02:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_MedicalStaffs_MedicalStaffId] FOREIGN KEY ([MedicalStaffId]) REFERENCES [MedicalStaffs] ([StaffId]);" (0723d8ff)
+2025-11-05T17:55:53.6539630+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] ADD CONSTRAINT [FK_Patients_Suburbs_SuburbId] FOREIGN KEY ([SuburbId]) REFERENCES [Suburbs] ([SuburbId]);" (0723d8ff)
+2025-11-05T17:55:54.4660413+02:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PrescribedMedications] ADD CONSTRAINT [FK_PrescribedMedications_Medications_MedicationId] FOREIGN KEY ([MedicationId]) REFERENCES [Medications] ([MedicationId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:54.4699633+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [PrescribedMedications] ADD CONSTRAINT [FK_PrescribedMedications_Prescriptions_PrescriptionId] FOREIGN KEY ([PrescriptionId]) REFERENCES [Prescriptions] ([PrescriptionId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:54.4754692+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Suburbs] ADD CONSTRAINT [FK_Suburbs_Cities_CityId] FOREIGN KEY ([CityId]) REFERENCES [Cities] ([CityId]) ON DELETE CASCADE;" (0723d8ff)
+2025-11-05T17:55:54.4779919+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20251105154721_addNavProperty', N'8.0.0');" (0723d8ff)
+2025-11-05T19:37:28.2596283+02:00  [INF] User profile is available. Using '"C:\Users\ThatoTs\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2025-11-05T19:37:28.5158989+02:00  [INF] Now listening on: "https://localhost:7150" (d826f4b8)
+2025-11-05T19:37:28.5174032+02:00  [INF] Now listening on: "http://localhost:5031" (d826f4b8)
+2025-11-05T19:37:28.5579333+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2025-11-05T19:37:28.5597643+02:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2025-11-05T19:37:28.5611563+02:00  [INF] Content root path: "D:\HomeSpace\E_Prescribing_API\E_Prescribing_API" (cc26f24e)
+2025-11-05T19:37:29.5033851+02:00 0HNGSI7UQSN0O:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - null null (d509f86a)
+2025-11-05T19:37:29.6982753+02:00 0HNGSI7UQSN0O:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - 301 0 null 202.442ms (74253ad3)
+2025-11-05T19:37:29.7106034+02:00 0HNGSI7UQSN0O:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - null null (d509f86a)
+2025-11-05T19:37:29.8070320+02:00 0HNGSI7UQSN0O:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 96.5533ms (74253ad3)
+2025-11-05T19:37:29.8742882+02:00 0HNGSI7UQSN0O:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2025-11-05T19:37:29.8848447+02:00 0HNGSI7UQSN0O:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - 200 13770 "application/javascript; charset=utf-8" 10.5205ms (74253ad3)
+2025-11-05T19:37:29.8850260+02:00 0HNGSI7UQSN0O:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - null null (d509f86a)
+2025-11-05T19:37:29.8889977+02:00 0HNGSI7UQSN0O:0000000B [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - null null (d509f86a)
+2025-11-05T19:37:29.9063337+02:00 0HNGSI7UQSN0O:00000009 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T19:37:29.9065505+02:00 0HNGSI7UQSN0O:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - 499 152034 "text/css" 21.5039ms (74253ad3)
+2025-11-05T19:37:29.9511157+02:00 0HNGSI7UQSN0O:0000000B [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 62.5371ms (74253ad3)
+2025-11-05T19:37:30.0137035+02:00 0HNGSI7UQSN0O:0000000D [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - null null (d509f86a)
+2025-11-05T19:37:30.0156286+02:00 0HNGSI7UQSN0O:0000000D [INF] Sending file. Request path: '"/favicon-16x16.png"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T19:37:30.0158285+02:00 0HNGSI7UQSN0O:0000000D [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - 200 665 "image/png" 2.5612ms (74253ad3)
+2025-11-05T19:37:30.0720224+02:00 0HNGSI7UQSN0O:0000000F [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2025-11-05T19:37:30.2286727+02:00 0HNGSI7UQSN0O:0000000F [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 156.6865ms (74253ad3)
+2025-11-05T19:37:43.7042757+02:00 0HNGSI7UQSN0O:00000011 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 1497 (d509f86a)
+2025-11-05T19:37:43.7086578+02:00 0HNGSI7UQSN0O:00000011 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:37:43.7364079+02:00 0HNGSI7UQSN0O:00000011 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:37:44.1631554+02:00 0HNGSI7UQSN0O:00000011 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:37:44.1895332+02:00 0HNGSI7UQSN0O:00000011 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 448.9123ms (afa2e885)
+2025-11-05T19:37:44.1896574+02:00 0HNGSI7UQSN0O:00000011 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:37:44.1929591+02:00 0HNGSI7UQSN0O:00000011 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 488.9245ms (74253ad3)
+2025-11-05T19:45:41.9960785+02:00 0HNGSI7UQSN0P:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12339 (d509f86a)
+2025-11-05T19:45:42.0014629+02:00 0HNGSI7UQSN0P:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:45:42.0026559+02:00 0HNGSI7UQSN0P:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:45:42.0582692+02:00 0HNGSI7UQSN0P:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:45:42.0587371+02:00 0HNGSI7UQSN0P:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 55.9896ms (afa2e885)
+2025-11-05T19:45:42.0588066+02:00 0HNGSI7UQSN0P:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:45:42.0589549+02:00 0HNGSI7UQSN0P:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 63.1767ms (74253ad3)
+2025-11-05T19:47:34.7143393+02:00 0HNGSI7UQSN0P:00000005 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12339 (d509f86a)
+2025-11-05T19:47:34.7148419+02:00 0HNGSI7UQSN0P:00000005 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:47:34.7149664+02:00 0HNGSI7UQSN0P:00000005 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:47:34.7232842+02:00 0HNGSI7UQSN0P:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:47:34.7234927+02:00 0HNGSI7UQSN0P:00000005 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 8.4941ms (afa2e885)
+2025-11-05T19:47:34.7235318+02:00 0HNGSI7UQSN0P:00000005 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:47:34.7236028+02:00 0HNGSI7UQSN0P:00000005 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 9.7561ms (74253ad3)
+2025-11-05T19:47:52.4936103+02:00 0HNGSI7UQSN0P:00000007 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:47:52.4939662+02:00 0HNGSI7UQSN0P:00000007 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:47:52.4941138+02:00 0HNGSI7UQSN0P:00000007 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:47:52.4962199+02:00 0HNGSI7UQSN0P:00000007 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:47:52.4965047+02:00 0HNGSI7UQSN0P:00000007 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 2.3384ms (afa2e885)
+2025-11-05T19:47:52.4965416+02:00 0HNGSI7UQSN0P:00000007 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:47:52.4966355+02:00 0HNGSI7UQSN0P:00000007 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 3.7608ms (74253ad3)
+2025-11-05T19:48:11.7191786+02:00 0HNGSI7UQSN0P:00000009 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:48:11.7196804+02:00 0HNGSI7UQSN0P:00000009 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:48:11.7198220+02:00 0HNGSI7UQSN0P:00000009 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:48:11.7209915+02:00 0HNGSI7UQSN0P:00000009 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:48:11.7212578+02:00 0HNGSI7UQSN0P:00000009 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.4012ms (afa2e885)
+2025-11-05T19:48:11.7212866+02:00 0HNGSI7UQSN0P:00000009 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:48:11.7213411+02:00 0HNGSI7UQSN0P:00000009 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 2.3251ms (74253ad3)
+2025-11-05T19:48:23.2048881+02:00 0HNGSI7UQSN0P:0000000B [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:48:23.2055003+02:00 0HNGSI7UQSN0P:0000000B [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:48:23.2062004+02:00 0HNGSI7UQSN0P:0000000B [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:48:23.2106607+02:00 0HNGSI7UQSN0P:0000000B [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:48:23.2109026+02:00 0HNGSI7UQSN0P:0000000B [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 4.6411ms (afa2e885)
+2025-11-05T19:48:23.2109415+02:00 0HNGSI7UQSN0P:0000000B [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:48:23.2110478+02:00 0HNGSI7UQSN0P:0000000B [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 6.2118ms (74253ad3)
+2025-11-05T19:49:29.6081251+02:00 0HNGSI7UQSN0P:0000000D [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:49:29.6083535+02:00 0HNGSI7UQSN0P:0000000D [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:49:29.6084519+02:00 0HNGSI7UQSN0P:0000000D [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:49:29.6103148+02:00 0HNGSI7UQSN0P:0000000D [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:49:29.6104477+02:00 0HNGSI7UQSN0P:0000000D [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.9734ms (afa2e885)
+2025-11-05T19:49:29.6104646+02:00 0HNGSI7UQSN0P:0000000D [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:49:29.6105533+02:00 0HNGSI7UQSN0P:0000000D [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 2.8375ms (74253ad3)
+2025-11-05T19:51:23.2031755+02:00 0HNGSI7UQSN0P:0000000F [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12340 (d509f86a)
+2025-11-05T19:51:23.2064895+02:00 0HNGSI7UQSN0P:0000000F [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:51:23.2065836+02:00 0HNGSI7UQSN0P:0000000F [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:51:23.2087655+02:00 0HNGSI7UQSN0P:0000000F [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:51:23.2089481+02:00 0HNGSI7UQSN0P:0000000F [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 2.2952ms (afa2e885)
+2025-11-05T19:51:23.2090019+02:00 0HNGSI7UQSN0P:0000000F [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:51:23.2090713+02:00 0HNGSI7UQSN0P:0000000F [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 5.9628ms (74253ad3)
+2025-11-05T19:56:12.8847049+02:00 0HNGSI7UQSN0Q:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 650 (d509f86a)
+2025-11-05T19:56:12.8849960+02:00 0HNGSI7UQSN0Q:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:56:12.8851085+02:00 0HNGSI7UQSN0Q:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:56:12.8912749+02:00 0HNGSI7UQSN0Q:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:56:12.8914570+02:00 0HNGSI7UQSN0Q:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 6.3239ms (afa2e885)
+2025-11-05T19:56:12.8914807+02:00 0HNGSI7UQSN0Q:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:56:12.8916228+02:00 0HNGSI7UQSN0Q:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 7.4016ms (74253ad3)
+2025-11-05T19:56:49.9332708+02:00 0HNGSI7UQSN0Q:00000005 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 650 (d509f86a)
+2025-11-05T19:56:49.9335460+02:00 0HNGSI7UQSN0Q:00000005 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:56:49.9336403+02:00 0HNGSI7UQSN0Q:00000005 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:56:49.9342590+02:00 0HNGSI7UQSN0Q:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:56:49.9344121+02:00 0HNGSI7UQSN0Q:00000005 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 0.752ms (afa2e885)
+2025-11-05T19:56:49.9344334+02:00 0HNGSI7UQSN0Q:00000005 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:56:49.9345072+02:00 0HNGSI7UQSN0Q:00000005 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 1.595ms (74253ad3)
+2025-11-05T19:57:26.9896032+02:00 0HNGSI7UQSN0Q:00000007 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 1497 (d509f86a)
+2025-11-05T19:57:26.9908339+02:00 0HNGSI7UQSN0Q:00000007 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:57:26.9933820+02:00 0HNGSI7UQSN0Q:00000007 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:57:26.9966052+02:00 0HNGSI7UQSN0Q:00000007 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:57:26.9968429+02:00 0HNGSI7UQSN0Q:00000007 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 3.3818ms (afa2e885)
+2025-11-05T19:57:26.9969185+02:00 0HNGSI7UQSN0Q:00000007 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:57:26.9970184+02:00 0HNGSI7UQSN0Q:00000007 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 7.563ms (74253ad3)
+2025-11-05T19:57:43.4322813+02:00 0HNGSI7UQSN0Q:00000009 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:57:43.4325361+02:00 0HNGSI7UQSN0Q:00000009 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:57:43.4326368+02:00 0HNGSI7UQSN0Q:00000009 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:57:43.4344735+02:00 0HNGSI7UQSN0Q:00000009 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:57:43.4347530+02:00 0HNGSI7UQSN0Q:00000009 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 2.0758ms (afa2e885)
+2025-11-05T19:57:43.4347860+02:00 0HNGSI7UQSN0Q:00000009 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:57:43.4348696+02:00 0HNGSI7UQSN0Q:00000009 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 3.1274ms (74253ad3)
+2025-11-05T19:59:27.3570113+02:00 0HNGSI7UQSN0Q:0000000B [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12484 (d509f86a)
+2025-11-05T19:59:27.3573727+02:00 0HNGSI7UQSN0Q:0000000B [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T19:59:27.3574572+02:00 0HNGSI7UQSN0Q:0000000B [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T19:59:27.3625099+02:00 0HNGSI7UQSN0Q:0000000B [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T19:59:27.3626687+02:00 0HNGSI7UQSN0Q:0000000B [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 5.1946ms (afa2e885)
+2025-11-05T19:59:27.3626946+02:00 0HNGSI7UQSN0Q:0000000B [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T19:59:27.3627562+02:00 0HNGSI7UQSN0Q:0000000B [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 6.016ms (74253ad3)
+2025-11-05T20:00:16.8503383+02:00 0HNGSI7UQSN0Q:0000000D [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:00:16.8656124+02:00 0HNGSI7UQSN0Q:0000000D [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:00:16.8657329+02:00 0HNGSI7UQSN0Q:0000000D [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:00:16.8682214+02:00 0HNGSI7UQSN0Q:0000000D [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:00:16.8684529+02:00 0HNGSI7UQSN0Q:0000000D [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 2.6935ms (afa2e885)
+2025-11-05T20:00:16.8685057+02:00 0HNGSI7UQSN0Q:0000000D [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:00:16.8686146+02:00 0HNGSI7UQSN0Q:0000000D [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 18.3686ms (74253ad3)
+2025-11-05T20:01:16.8275650+02:00 0HNGSI7UQSN0Q:0000000F [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12342 (d509f86a)
+2025-11-05T20:01:16.8278352+02:00 0HNGSI7UQSN0Q:0000000F [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:01:16.8279193+02:00 0HNGSI7UQSN0Q:0000000F [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:01:16.8291109+02:00 0HNGSI7UQSN0Q:0000000F [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:01:16.8292855+02:00 0HNGSI7UQSN0Q:0000000F [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.3474ms (afa2e885)
+2025-11-05T20:01:16.8293129+02:00 0HNGSI7UQSN0Q:0000000F [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:01:16.8293593+02:00 0HNGSI7UQSN0Q:0000000F [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 2.3462ms (74253ad3)
+2025-11-05T20:01:31.2528071+02:00 0HNGSI7UQSN0Q:00000011 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:01:31.2532069+02:00 0HNGSI7UQSN0Q:00000011 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:01:31.2532872+02:00 0HNGSI7UQSN0Q:00000011 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:01:31.2547376+02:00 0HNGSI7UQSN0Q:00000011 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:01:31.2549039+02:00 0HNGSI7UQSN0Q:00000011 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.5897ms (afa2e885)
+2025-11-05T20:01:31.2549285+02:00 0HNGSI7UQSN0Q:00000011 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:01:31.2550020+02:00 0HNGSI7UQSN0Q:00000011 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 2.7201ms (74253ad3)
+2025-11-05T20:02:17.1196011+02:00 0HNGSI7UQSN0Q:00000013 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:02:17.1198098+02:00 0HNGSI7UQSN0Q:00000013 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:02:17.1214648+02:00 0HNGSI7UQSN0Q:00000013 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:02:17.1266763+02:00 0HNGSI7UQSN0Q:00000013 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:02:17.1269866+02:00 0HNGSI7UQSN0Q:00000013 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 4.9806ms (afa2e885)
+2025-11-05T20:02:17.1270151+02:00 0HNGSI7UQSN0Q:00000013 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:02:17.1270702+02:00 0HNGSI7UQSN0Q:00000013 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 8.2265ms (74253ad3)
+2025-11-05T20:04:11.8297115+02:00 0HNGSI7UQSN0Q:00000015 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 561 (d509f86a)
+2025-11-05T20:04:11.8299618+02:00 0HNGSI7UQSN0Q:00000015 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:04:11.8300643+02:00 0HNGSI7UQSN0Q:00000015 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:04:11.8306690+02:00 0HNGSI7UQSN0Q:00000015 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:04:11.8308221+02:00 0HNGSI7UQSN0Q:00000015 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 0.7147ms (afa2e885)
+2025-11-05T20:04:11.8308391+02:00 0HNGSI7UQSN0Q:00000015 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:04:11.8308939+02:00 0HNGSI7UQSN0Q:00000015 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 1.2422ms (74253ad3)
+2025-11-05T20:05:16.2196993+02:00 0HNGSI7UQSN0Q:00000017 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 477 (d509f86a)
+2025-11-05T20:05:16.2199568+02:00 0HNGSI7UQSN0Q:00000017 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:05:16.2200575+02:00 0HNGSI7UQSN0Q:00000017 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:05:16.2207810+02:00 0HNGSI7UQSN0Q:00000017 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:05:16.2209173+02:00 0HNGSI7UQSN0Q:00000017 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 0.828ms (afa2e885)
+2025-11-05T20:05:16.2209345+02:00 0HNGSI7UQSN0Q:00000017 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:05:16.2210088+02:00 0HNGSI7UQSN0Q:00000017 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 1.5128ms (74253ad3)
+2025-11-05T20:05:37.5411681+02:00 0HNGSI7UQSN0Q:00000019 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:05:37.5415201+02:00 0HNGSI7UQSN0Q:00000019 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:05:37.5416227+02:00 0HNGSI7UQSN0Q:00000019 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:05:37.5428796+02:00 0HNGSI7UQSN0Q:00000019 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:05:37.5430157+02:00 0HNGSI7UQSN0Q:00000019 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.3744ms (afa2e885)
+2025-11-05T20:05:37.5430347+02:00 0HNGSI7UQSN0Q:00000019 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:05:37.5430847+02:00 0HNGSI7UQSN0Q:00000019 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 3.0793ms (74253ad3)
+2025-11-05T20:06:14.0580633+02:00 0HNGSI7UQSN0Q:0000001B [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:06:14.0614512+02:00 0HNGSI7UQSN0Q:0000001B [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:06:14.0615357+02:00 0HNGSI7UQSN0Q:0000001B [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:06:14.0633111+02:00 0HNGSI7UQSN0Q:0000001B [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:06:14.0634584+02:00 0HNGSI7UQSN0Q:0000001B [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.8944ms (afa2e885)
+2025-11-05T20:06:14.0634811+02:00 0HNGSI7UQSN0Q:0000001B [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:06:14.0635456+02:00 0HNGSI7UQSN0Q:0000001B [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 5.5269ms (74253ad3)
+2025-11-05T20:06:44.0631853+02:00 0HNGSI7UQSN0Q:0000001D [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - "application/json" 12341 (d509f86a)
+2025-11-05T20:06:44.0633870+02:00 0HNGSI7UQSN0Q:0000001D [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:06:44.0634720+02:00 0HNGSI7UQSN0Q:0000001D [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:06:44.0648211+02:00 0HNGSI7UQSN0Q:0000001D [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:06:44.0649647+02:00 0HNGSI7UQSN0Q:0000001D [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.4638ms (afa2e885)
+2025-11-05T20:06:44.0649864+02:00 0HNGSI7UQSN0Q:0000001D [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:06:44.0650579+02:00 0HNGSI7UQSN0Q:0000001D [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription""" - 400 null "application/problem+json; charset=utf-8" 1.9229ms (74253ad3)
+2025-11-05T20:09:11.7042491+02:00  [INF] User profile is available. Using '"C:\Users\ThatoTs\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2025-11-05T20:09:11.9125827+02:00  [INF] Now listening on: "https://localhost:7150" (d826f4b8)
+2025-11-05T20:09:11.9142111+02:00  [INF] Now listening on: "http://localhost:5031" (d826f4b8)
+2025-11-05T20:09:11.9517737+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2025-11-05T20:09:11.9537133+02:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2025-11-05T20:09:11.9564483+02:00  [INF] Content root path: "D:\HomeSpace\E_Prescribing_API\E_Prescribing_API" (cc26f24e)
+2025-11-05T20:09:13.0755755+02:00 0HNGSIPM474GO:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - null null (d509f86a)
+2025-11-05T20:09:13.2841658+02:00 0HNGSIPM474GO:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - 301 0 null 215.1879ms (74253ad3)
+2025-11-05T20:09:13.3288684+02:00 0HNGSIPM474GO:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - null null (d509f86a)
+2025-11-05T20:09:13.4372778+02:00 0HNGSIPM474GO:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 108.5975ms (74253ad3)
+2025-11-05T20:09:13.5231823+02:00 0HNGSIPM474GO:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2025-11-05T20:09:13.5306967+02:00 0HNGSIPM474GO:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - 200 13770 "application/javascript; charset=utf-8" 7.7735ms (74253ad3)
+2025-11-05T20:09:13.5323659+02:00 0HNGSIPM474GO:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - null null (d509f86a)
+2025-11-05T20:09:13.5337971+02:00 0HNGSIPM474GO:0000000B [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - null null (d509f86a)
+2025-11-05T20:09:13.5528942+02:00 0HNGSIPM474GO:00000009 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T20:09:13.5531077+02:00 0HNGSIPM474GO:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - 499 152034 "text/css" 20.7942ms (74253ad3)
+2025-11-05T20:09:13.5896211+02:00 0HNGSIPM474GO:0000000B [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 56.2528ms (74253ad3)
+2025-11-05T20:09:13.6724684+02:00 0HNGSIPM474GO:0000000D [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - null null (d509f86a)
+2025-11-05T20:09:13.6741021+02:00 0HNGSIPM474GO:0000000D [INF] Sending file. Request path: '"/favicon-16x16.png"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T20:09:13.6742538+02:00 0HNGSIPM474GO:0000000D [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - 499 665 "image/png" 1.8812ms (74253ad3)
+2025-11-05T20:09:13.7172191+02:00 0HNGSIPM474GO:0000000F [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2025-11-05T20:09:13.8707280+02:00 0HNGSIPM474GO:0000000F [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 154.2793ms (74253ad3)
+2025-11-05T20:09:59.0723982+02:00  [INF] User profile is available. Using '"C:\Users\ThatoTs\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2025-11-05T20:09:59.3421089+02:00  [INF] Now listening on: "https://localhost:7150" (d826f4b8)
+2025-11-05T20:09:59.3438935+02:00  [INF] Now listening on: "http://localhost:5031" (d826f4b8)
+2025-11-05T20:09:59.3953968+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2025-11-05T20:09:59.3977218+02:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2025-11-05T20:09:59.4000178+02:00  [INF] Content root path: "D:\HomeSpace\E_Prescribing_API\E_Prescribing_API" (cc26f24e)
+2025-11-05T20:10:00.8253683+02:00 0HNGSIQ49N924:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - null null (d509f86a)
+2025-11-05T20:10:01.0703817+02:00 0HNGSIQ49N924:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger""" - 301 0 null 254.4896ms (74253ad3)
+2025-11-05T20:10:01.0860757+02:00 0HNGSIQ49N924:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - null null (d509f86a)
+2025-11-05T20:10:01.1996488+02:00 0HNGSIQ49N924:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 113.6807ms (74253ad3)
+2025-11-05T20:10:01.2725873+02:00 0HNGSIQ49N924:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2025-11-05T20:10:01.2784396+02:00 0HNGSIQ49N924:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_framework/aspnetcore-browser-refresh.js""" - 200 13770 "application/javascript; charset=utf-8" 6.2379ms (74253ad3)
+2025-11-05T20:10:01.2873907+02:00 0HNGSIQ49N924:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - null null (d509f86a)
+2025-11-05T20:10:01.2886894+02:00 0HNGSIQ49N924:0000000B [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - null null (d509f86a)
+2025-11-05T20:10:01.3137728+02:00 0HNGSIQ49N924:00000009 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T20:10:01.3139865+02:00 0HNGSIQ49N924:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/swagger-ui.css""" - 499 152034 "text/css" 26.6643ms (74253ad3)
+2025-11-05T20:10:01.3558744+02:00 0HNGSIQ49N924:0000000B [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 67.4109ms (74253ad3)
+2025-11-05T20:10:02.6696142+02:00 0HNGSIQ49N924:0000000D [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - null null (d509f86a)
+2025-11-05T20:10:02.6698349+02:00 0HNGSIQ49N924:0000000F [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2025-11-05T20:10:02.6716238+02:00 0HNGSIQ49N924:0000000D [INF] Sending file. Request path: '"/favicon-16x16.png"'. Physical path: '"N/A"' (27b0a520)
+2025-11-05T20:10:02.6718567+02:00 0HNGSIQ49N924:0000000D [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/favicon-16x16.png""" - 499 665 "image/png" 2.6658ms (74253ad3)
+2025-11-05T20:10:02.7999195+02:00 0HNGSIQ49N924:0000000F [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7150""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 130.5156ms (74253ad3)
+2025-11-05T20:13:40.7115403+02:00 0HNGSIQ49N925:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 477 (d509f86a)
+2025-11-05T20:13:40.7166150+02:00 0HNGSIQ49N925:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:13:40.7391665+02:00 0HNGSIQ49N925:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:13:40.9596823+02:00 0HNGSIQ49N925:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:13:40.9723424+02:00 0HNGSIQ49N925:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 229.6636ms (afa2e885)
+2025-11-05T20:13:40.9724315+02:00 0HNGSIQ49N925:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:13:40.9743960+02:00 0HNGSIQ49N925:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 262.9111ms (74253ad3)
+2025-11-05T20:14:17.5635600+02:00 0HNGSIQ49N925:00000005 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 477 (d509f86a)
+2025-11-05T20:14:17.5651109+02:00 0HNGSIQ49N925:00000005 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:14:17.5654789+02:00 0HNGSIQ49N925:00000005 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:14:17.5729868+02:00 0HNGSIQ49N925:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:14:17.5735500+02:00 0HNGSIQ49N925:00000005 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 7.9653ms (afa2e885)
+2025-11-05T20:14:17.5736224+02:00 0HNGSIQ49N925:00000005 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:14:17.5738401+02:00 0HNGSIQ49N925:00000005 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 10.5079ms (74253ad3)
+2025-11-05T20:20:56.7165615+02:00 0HNGSIQ49N926:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12339 (d509f86a)
+2025-11-05T20:20:56.7170926+02:00 0HNGSIQ49N926:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:20:56.7179048+02:00 0HNGSIQ49N926:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:20:56.7445851+02:00 0HNGSIQ49N926:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:20:56.7448316+02:00 0HNGSIQ49N926:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 26.8663ms (afa2e885)
+2025-11-05T20:20:56.7448675+02:00 0HNGSIQ49N926:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:20:56.7449708+02:00 0HNGSIQ49N926:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 28.5517ms (74253ad3)
+2025-11-05T20:31:46.3122222+02:00 0HNGSIQ49N927:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12339 (d509f86a)
+2025-11-05T20:31:46.3129013+02:00 0HNGSIQ49N927:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:31:46.3133902+02:00 0HNGSIQ49N927:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:31:46.3203280+02:00 0HNGSIQ49N927:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:31:46.3205346+02:00 0HNGSIQ49N927:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 7.1045ms (afa2e885)
+2025-11-05T20:31:46.3205631+02:00 0HNGSIQ49N927:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:31:46.3206358+02:00 0HNGSIQ49N927:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 8.7667ms (74253ad3)
+2025-11-05T20:32:19.8039280+02:00 0HNGSIQ49N927:00000005 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12340 (d509f86a)
+2025-11-05T20:32:19.8048814+02:00 0HNGSIQ49N927:00000005 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:32:19.8411013+02:00 0HNGSIQ49N927:00000005 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:32:19.8439892+02:00 0HNGSIQ49N927:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:32:19.8442621+02:00 0HNGSIQ49N927:00000005 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 3.1125ms (afa2e885)
+2025-11-05T20:32:19.8443042+02:00 0HNGSIQ49N927:00000005 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:32:19.8445522+02:00 0HNGSIQ49N927:00000005 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 40.6511ms (74253ad3)
+2025-11-05T20:34:15.0401538+02:00 0HNGSIQ49N927:00000007 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12340 (d509f86a)
+2025-11-05T20:34:15.0404400+02:00 0HNGSIQ49N927:00000007 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:34:15.0405365+02:00 0HNGSIQ49N927:00000007 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:34:15.0421592+02:00 0HNGSIQ49N927:00000007 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:34:15.0423446+02:00 0HNGSIQ49N927:00000007 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.6856ms (afa2e885)
+2025-11-05T20:34:15.0423718+02:00 0HNGSIQ49N927:00000007 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:34:15.0424419+02:00 0HNGSIQ49N927:00000007 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 2.6167ms (74253ad3)
+2025-11-05T20:35:05.5127917+02:00 0HNGSIQ49N927:00000009 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12340 (d509f86a)
+2025-11-05T20:35:05.5130994+02:00 0HNGSIQ49N927:00000009 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:35:05.5146654+02:00 0HNGSIQ49N927:00000009 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:35:05.5178883+02:00 0HNGSIQ49N927:00000009 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:35:05.5180538+02:00 0HNGSIQ49N927:00000009 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 3.2767ms (afa2e885)
+2025-11-05T20:35:05.5180760+02:00 0HNGSIQ49N927:00000009 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:35:05.5181331+02:00 0HNGSIQ49N927:00000009 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 6.1273ms (74253ad3)
+2025-11-05T20:35:23.1575732+02:00 0HNGSIQ49N927:0000000B [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12340 (d509f86a)
+2025-11-05T20:35:23.1578460+02:00 0HNGSIQ49N927:0000000B [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:35:23.1579350+02:00 0HNGSIQ49N927:0000000B [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:35:23.1595180+02:00 0HNGSIQ49N927:0000000B [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:35:23.1596613+02:00 0HNGSIQ49N927:0000000B [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.6877ms (afa2e885)
+2025-11-05T20:35:23.1596852+02:00 0HNGSIQ49N927:0000000B [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:35:23.1597648+02:00 0HNGSIQ49N927:0000000B [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 2.5355ms (74253ad3)
+2025-11-05T20:40:36.5936889+02:00 0HNGSIQ49N928:00000003 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12344 (d509f86a)
+2025-11-05T20:40:36.5979311+02:00 0HNGSIQ49N928:00000003 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:40:36.5989292+02:00 0HNGSIQ49N928:00000003 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:40:36.6018861+02:00 0HNGSIQ49N928:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:40:36.6020464+02:00 0HNGSIQ49N928:00000003 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 3.0652ms (afa2e885)
+2025-11-05T20:40:36.6020941+02:00 0HNGSIQ49N928:00000003 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:40:36.6021561+02:00 0HNGSIQ49N928:00000003 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 9.2008ms (74253ad3)
+2025-11-05T20:43:09.1374829+02:00 0HNGSIQ49N928:00000005 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12344 (d509f86a)
+2025-11-05T20:43:09.1384715+02:00 0HNGSIQ49N928:00000005 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:43:09.1399338+02:00 0HNGSIQ49N928:00000005 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:43:09.1417837+02:00 0HNGSIQ49N928:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:43:09.1419120+02:00 0HNGSIQ49N928:00000005 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 1.9569ms (afa2e885)
+2025-11-05T20:43:09.1419295+02:00 0HNGSIQ49N928:00000005 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:43:09.1419845+02:00 0HNGSIQ49N928:00000005 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 4.5751ms (74253ad3)
+2025-11-05T20:43:59.2679105+02:00 0HNGSIQ49N928:00000007 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - "application/json" 12345 (d509f86a)
+2025-11-05T20:43:59.2708757+02:00 0HNGSIQ49N928:00000007 [INF] Executing endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (500cc934)
+2025-11-05T20:43:59.2722055+02:00 0HNGSIQ49N928:00000007 [INF] Route matched with "{action = \"PrescribeMedication\", controller = \"Prescription\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PrescribeMedication(E_Prescribing_API.CollectionModel.PrescriptionCollection)" on controller "E_Prescribing_API.Controllers.PrescriptionController" ("E_Prescribing_API"). (122b2fdf)
+2025-11-05T20:43:59.2750005+02:00 0HNGSIQ49N928:00000007 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2025-11-05T20:43:59.2752816+02:00 0HNGSIQ49N928:00000007 [INF] Executed action "E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)" in 3.0289ms (afa2e885)
+2025-11-05T20:43:59.2753131+02:00 0HNGSIQ49N928:00000007 [INF] Executed endpoint '"E_Prescribing_API.Controllers.PrescriptionController.PrescribeMedication (E_Prescribing_API)"' (99874f2b)
+2025-11-05T20:43:59.2753758+02:00 0HNGSIQ49N928:00000007 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7150""""/api/Prescription/PrescribeMedication""" - 400 null "application/problem+json; charset=utf-8" 7.6397ms (74253ad3)
+2025-11-05T20:45:58.9706358+02:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T20:45:58.9895907+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T20:45:58.9916967+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2025-11-05T20:45:58.9927340+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2025-11-05T20:45:59.0028696+02:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2025-11-05T20:45:59.0123133+02:00  [INF] Applying migration '"20251105184531_removefa"'. (0e2ac64d)
+2025-11-05T20:45:59.0666160+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Patients] DROP CONSTRAINT [FK_Patients_MedicalStaffs_MedicalStaffId];" (0723d8ff)
+2025-11-05T20:45:59.0742226+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DROP INDEX [IX_Patients_MedicalStaffId] ON [Patients];" (0723d8ff)
+2025-11-05T20:45:59.1262325+02:00  [INF] Executed DbCommand ("52"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Patients]') AND [c].[name] = N'MedicalStaffId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Patients] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Patients] DROP COLUMN [MedicalStaffId];" (0723d8ff)
+2025-11-05T20:45:59.1288184+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20251105184531_removefa', N'8.0.0');" (0723d8ff)

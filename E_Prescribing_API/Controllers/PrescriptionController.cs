@@ -23,7 +23,7 @@ namespace E_Prescribing_API.Controllers
             _alerts = alerts;
 
         }
-        [HttpPost]
+        [HttpPost("PrescribeMedication")]
         public async Task<IActionResult> PrescribeMedication([FromBody] PrescriptionCollection model)
         {
             try

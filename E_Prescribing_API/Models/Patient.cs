@@ -30,9 +30,6 @@ namespace E_Prescribing_API.Models
         public string? AddressLine2 { get; set; }
         public Suburb Suburb { get; set; }
         public int? SuburbId { get; set; }
-        public MedicalStaff MedicalStaff { get; set; }
-        public int? MedicalStaffId { get; set; }
-
 
         public List<PatientCondition> PatientConditions { get; set; }
         //public List<PatientVital> PatientVitals { get; set; }
